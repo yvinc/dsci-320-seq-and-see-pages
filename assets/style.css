@@ -1,159 +1,143 @@
-/* ============================================================
-   MERFISH Preoptic Project — Science 2018 Inspired Theme
-   Perfect for GitHub Pages + Altair dashboards
-   ============================================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap');
+/* Minimalistic MERFISH Dashboard Style – 2025 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --science-red: #D7191C;     /* Exact red from the paper */
-  --science-darkred: #9A1616;
-  --science-black: #2B2B2B;
-  --science-gray: #555555;
-  --light-gray: #f8f9fa;
-  --border-gray: #dee2e6;
-  --card-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  --transition: all 0.25s ease;
+  --bg: #ffffffff;
+  --text: #1a1a1a;
+  --gray: #666;
+  --border: #d2d079ff;
+  --accent: #a5cbe9ff;        /* Classic Science red */
+  --hover: #ddd19bff;
 }
 
-* { box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  margin: 0;
-  font-family: 'Roboto', system-ui, sans-serif;
-  background: white;
-  color: var(--science-black);
-  line-height: 1.7;
-  font-size: 1.05rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 0;
 }
 
 header {
-  background: linear-gradient(135deg, var(--science-red), var(--science-darkred));
+  background: var(--accent);
   color: white;
   text-align: center;
   padding: 4rem 2rem 3rem;
-  margin-bottom: 3rem;
-  box-shadow: 0 4px 20px rgba(215,25,28,0.3);
 }
 
 header h1 {
-  font-size: 3.2rem;
-  margin: 0 0 0.5rem;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 header p {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   opacity: 0.95;
-  margin: 0.5rem 0;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-header a { color: white; text-decoration: underline; }
-
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 2rem;
 }
 
 .member {
-  margin-bottom: 5rem;
-  background: white;
-  border-radius: 12px;
-  padding: 2.5rem;
-  box-shadow: var(--card-shadow);
-  border-left: 6px solid var(--science-red);
+  margin: 4rem 0;
 }
 
 .member h2 {
   font-size: 2rem;
-  color: var(--science-red);
-  margin-top: 0;
-  padding-bottom: 0.8rem;
-  border-bottom: 3px solid var(--science-red);
+  color: var(--accent);
+  margin-bottom: 2rem;
   font-weight: 500;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  display: inline-block;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
 }
 
 .card {
   background: white;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: var(--card-shadow);
-  transition: var(--transition);
-  border: 1px solid var(--border-gray);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 35px rgba(0,0,0,0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .card img {
   width: 100%;
-  height: 220px;
+  height: 200px;
   object-fit: cover;
-  background: #f0f0f0;
-  border-bottom: 4px solid var(--science-red);
+  background: #f5f5f5;
 }
 
 .card-body {
-  padding: 1.5rem;
+  padding: 1.4rem;
 }
 
 .card h3 {
-  margin: 0 0 0.6rem;
-  font-size: 1.35rem;
-  color: var(--science-black);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
 }
 
 .card p {
-  color: var(--science-gray);
-  margin: 0 0 1rem;
+  color: var(--gray);
   font-size: 0.98rem;
+  margin-bottom: 1rem;
 }
 
 .btn {
   display: inline-block;
-  background: var(--science-red);
-  color: white !important;
-  padding: 0.9rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.75rem 1.3rem;
   border-radius: 6px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
-  transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(215,25,28,0.3);
+  transition: background 0.3s;
 }
 
 .btn:hover {
-  background: var(--science-darkred);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(215,25,28,0.4);
+  background: var(--hover);
 }
 
 footer {
   text-align: center;
   padding: 3rem 1rem;
-  background: var(--science-black);
-  color: #aaa;
-  margin-top: 6rem;
-  font-size: 0.95rem;
+  background: #f9f9f9;
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin-top: 5rem;
+  border-top: 1px solid var(--border);
 }
 
-footer a { color: #ddd; text-decoration: underline; }
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
 
-/* Mobile responsiveness */
+footer a:hover { text-decoration: underline; }
+
+/* Mobile */
 @media (max-width: 768px) {
-  header h1 { font-size: 2.5rem; }
-  header p { font-size: 1.1rem; }
   .grid { grid-template-columns: 1fr; }
-  .member { padding: 1.5rem; }
+  header h1 { font-size: 2.3rem; }
+  .member h2 { font-size: 1.8rem; }
 }
