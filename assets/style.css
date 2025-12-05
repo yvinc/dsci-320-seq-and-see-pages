@@ -5,8 +5,8 @@
   --bg: #ffffffff;
   --text: #1a1a1a;
   --gray: #666;
-  --border: #d2d079ff;
-  --accent: #a5cbe9ff;        /* Classic Science red */
+  --border: #6d4148ff;
+  --accent: #919d60ff; /* Custom olive-green accent */
   --hover: #ddd19bff;
 }
 
@@ -38,6 +38,13 @@ header p {
   opacity: 0.95;
   max-width: 800px;
   margin: 0 auto;
+}
+
+.citation {
+  font-size: 1.1rem;
+  font-style: italic;
+  opacity: 0.85;
+  margin-top: 1rem;
 }
 
 .container {
@@ -100,6 +107,41 @@ header p {
   color: var(--gray);
   font-size: 0.98rem;
   margin-bottom: 1rem;
+}
+
+/* EXPANDABLE NOTES STYLING (these 12 lines make the <details> work) */
+.card details {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: var(--gray);
+}
+
+.card summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--accent);
+  list-style: none;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.card summary::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  transition: transform 0.3s;
+}
+
+.card details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.card details[open] p {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  background: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid var(--border);
 }
 
 .btn {

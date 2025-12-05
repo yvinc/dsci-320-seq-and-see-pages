@@ -1,223 +1,153 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>MERFISH Preoptic Hypothalamus | Group EDA Dashboard</title>
-
   <link rel="stylesheet" href="assets/style.css">
-
 </head>
-
 <body>
 
 <header>
-
-  <h1>Mouse Brain Hypothalamic Preoptic Area Explorer––Visualizing the Social Behaviours and Key Social Genes </h1>
-
-<p>Interactive Exploratory Data Analysis — DSCI 320</p>
-
-<p>Data: <a href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.8t8s248" style="color:#fff">Moffitt & Bambah-Mukku et al., Science 2018</a></p>
-
+  <h1>MERFISH Preoptic Region</h1>
+  <p>Our exploratory effort develops effective and novel visualization tools using Altair to aid research investigation and hypothesis synthesis, enabling succinct, reliable, and relevant exploratory data analysis (EDA) of the hypothalamic preoptic region data for enhanced understanding of neuronal diversity and social behaviors.</p>
+  <p class="citation">Moffitt & Bambah-Mukku et al., <i>Science</i> 362, eaau5324 (2018)</p>
 </header>
 
 <div class="container">
 
   <!-- Alina -->
-
   <div class="member">
-
     <h2>Alina</h2>
-
     <div class="grid">
-
       <div class="card">
-
         <img src="dashboards/Alina/01-view/thumbnail.png" alt="Alina View 1">
-
         <div class="card-body">
-
-          <h3>01 – Spatial Distribution & Behavior</h3>
-
-          <p>Interactive Centroid_X/Y scatter colored by Cell_class, Behavior, and Sex</p>
-
+          <h3>01 – Distribution of Cell Classes</h3>
+          <p>Explores the distribution of cell classes such as excitatory, inhibitory, and regulatory (glial) cells.</p>
+          <details>
+            <summary>Additional Notes</summary>
+            <p>This dashboard provides an overview of cell class proportions, highlighting the prevalence of inhibitory neurons (~43 clusters) and excitatory neurons (~23 clusters) as identified in the dataset, aligning with the paper's revelation of ~70 distinct neuronal populations.</p>
+          </details>
           <a href="dashboards/Alina/01-view/" class="btn">Open Dashboard →</a>
-
         </div>
-
       </div>
-
       <div class="card">
-
         <img src="dashboards/Alina/02-view/thumbnail.png" alt="Alina View 2">
-
         <div class="card-body">
-
-          <h3>02 – Neuropeptide Expression Patterns</h3>
-
-          <p>Esr1, Oxtr, Htr2c, Gal, Crh across behaviors and sexes</p>
-
+          <h3>02 – Co-expression of Inhibitory Marker Gad1</h3>
+          <p>Focuses on the co-expression patterns of the inhibitory genetic marker Gad1 with various other genes.</p>
+          <details>
+            <summary>Additional Notes</summary>
+            <p>Visualizes correlations and co-occurrence, noting Gad1's expression in many excitatory clusters, supporting the paper's observation of hybrid neurons capable of GABA/glutamate corelease.</p>
+          </details>
           <a href="dashboards/Alina/02-view/" class="btn">Open Dashboard →</a>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 
   <!-- Emily -->
-
   <div class="member">
-
     <h2>Emily</h2>
-
     <div class="grid">
-
       <div class="card">
-
         <img src="dashboards/Emily/01-view/thumbnail.png" alt="Emily View 1">
-
         <div class="card-body">
-
-          <h3>01 – Neuron Cluster Composition</h3>
-
-          <p>70+ neuronal populations and their spatial organization</p>
-
+          <h3>01 – Sex-Biased Cell Activation</h3>
+          <p>Explores sex-biased cell activation (marked by Fos levels) across cell clusters and social behavioral conditions.</p>
+          <details>
+            <summary>Additional Notes</summary>
+            <p>Highlights differential activation in behaviors like parenting and aggression, revealing populations selectively activated in males vs. females, as per the paper's findings on IEG expression imaging.</p>
+          </details>
           <a href="dashboards/Emily/01-view/" class="btn">Open Dashboard →</a>
-
         </div>
-
       </div>
-
       <div class="card">
-
         <img src="dashboards/Emily/02-view/thumbnail.png" alt="Emily View 2">
-
         <div class="card-body">
-
-          <h3>02 – Bregma Slice Gene Gradients</h3>
-
-          <p>Rostrocaudal expression patterns across key markers</p>
-
+          <h3>02 – Sexually Dimorphic Cell Distribution</h3>
+          <p>Examines sexually dimorphic patterns in spatial distribution and Bregma position, including interactions with behavioral conditions.</p>
+          <details>
+            <summary>Additional Notes</summary>
+            <p>Shows anterior-posterior variations and sex-behavior interactions, complementing the paper's spatial mapping of ~70 neuronal types and their organizations in nuclei like MPOA.</p>
+          </details>
           <a href="dashboards/Emily/02-view/" class="btn">Open Dashboard →</a>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 
   <!-- Prateek -->
-
   <div class="member">
-
     <h2>Prateek</h2>
-
     <div class="grid">
-
       <div class="card">
-
         <img src="dashboards/Prateek/01-view/thumbnail.png" alt="Prateek View 1">
-
         <div class="card-body">
-
-          <h3>01 – Social Behavior Activation</h3>
-
-          <p>Immediate-early gene (Fos) activation in parenting, mating, and aggression</p>
-
+          <h3>01 – Variance Explained by Sex vs. Individual Mice</h3>
+          <p>Investigates the relationship between variance explained by sex and by individual experimental mice IDs, noting no clear pattern but some outliers suggesting potential positive associations.</p>
+          <details>
+            <summary>Additional Notes</summary>
+            <p>This analysis demands further nuance, aligning with the paper's emphasis on individual variability in neuromodulatory signatures across ~31,000 profiled cells.</p>
+          </details>
           <a href="dashboards/Prateek/01-view/" class="btn">Open Dashboard →</a>
-
         </div>
-
       </div>
-
       <div class="card">
-
         <img src="dashboards/Prateek/02-view/thumbnail.png" alt="Prateek View 2">
-
         <div class="card-body">
-
-          <h3>02 – Co-expression & Correlation Explorer</h3>
-
-          <p>Interactive scatter matrix and 2D histograms for key gene pairs</p>
-
+          <h3>02 – Gene Expression Variability Between Sexes</h3>
+          <p>Analyzes variability in gene expression between sexes, with Esr1 showing greater variability in males, and Avpr1a higher in males, implying behavioral-genetic interactions.</p>
+          <details>
+            <summary>Additional Notes</summary>
+            <p>Supports the paper's insights into sex hormone signaling and neuromodulators like Avp in social behaviors.</p>
+          </details>
           <a href="dashboards/Prateek/02-view/" class="btn">Open Dashboard →</a>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 
   <!-- Vincy -->
-
   <div class="member">
-
     <h2>Vincy</h2>
-
     <div class="grid">
-
       <div class="card">
-
         <img src="dashboards/Vincy/01-view/thumbnail.png" alt="Vincy View 1">
-
         <div class="card-body">
-
-          <h3>01 – Cell Type Proportions by Condition</h3>
-
-          <p>Stacked bars and lollipop plots across behaviors and sexes</p>
-
+          <h3>01 – Spatial Mapping to Brain Atlas</h3>
+          <p>Maps cells to a mouse brain atlas, revealing origins in ventral regions like MPOC, MPOM, and MPA, providing nuanced anatomical insights within the preoptic area across behaviors and key genes.</p>
+          <details>
+            <summary>Additional Notes</summary>
+            <p>This unprecedented Altair-based genetic-level brain mapping enhances understanding of spatial organization, as in the paper's MERFISH imaging of ~1.1 million cells.</p>
+          </details>
           <a href="dashboards/Vincy/01-view/" class="btn">Open Dashboard →</a>
-
         </div>
-
       </div>
-
       <div class="card">
-
         <img src="dashboards/Vincy/02-view/thumbnail.png" alt="Vincy View 2">
-
         <div class="card-body">
-
-          <h3>02 – Top Activated Cells Explorer</h3>
-
-          <p>Ranked cells by Fos expression with linked spatial view</p>
-
+          <h3>02 – Key Social Gene Expression Patterns</h3>
+          <p>Explores expression of key social genes across anterior, middle, and posterior POA, with interactive co-expression analysis between gene pairs and animal identity details.</p>
+          <details>
+            <summary>Additional Notes</summary>
+            <p>Observes moderate correlation between Ar (testosterone) and Esr1 (estrogen), aiding hypothesis on neuromodulatory signatures as per the paper.</p>
+          </details>
           <a href="dashboards/Vincy/02-view/" class="btn">Open Dashboard →</a>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 
 </div>
 
 <footer>
-
   <p>Interactive EDA Dashboard • Built with Altair • Hosted on GitHub Pages • 
-
      <a href="https://www.science.org/doi/10.1126/science.aau5324">Original Paper</a> • 
-
      <a href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.8t8s248">Data on Dryad</a>
-
   </p>
-
 </footer>
 
 </body>
-
 </html>
