@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Final Group Report – MERFISH Preoptic Hypothalamus</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div style="text-align:center; padding:2rem; background:var(--accent); color:white;">
+  <h1>Final Group Report</h1>
+  <p>MERFISH Preoptic Hypothalamus – Interactive EDA Project 2025</p>
+  <p><a href="index.html" style="color:white; text-decoration:underline;">← Back to Dashboard Gallery</a></p>
+</div>
+<header id="title-block-header">
+<h1 class="title">Final Group Report – MERFISH Preoptic
+Hypothalamus</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#project-milestone-3-report-section"
+id="toc-project-milestone-3-report-section">Project Milestone 3: Report
+Section</a></li>
+<li><a href="#overview" id="toc-overview">Overview</a></li>
+<li><a href="#audience" id="toc-audience">Audience</a></li>
+<li><a href="#dataset" id="toc-dataset">Dataset</a></li>
+<li><a href="#general-takeaways" id="toc-general-takeaways">General
+Takeaways</a></li>
+<li><a href="#team-member-i-prateek" id="toc-team-member-i-prateek">Team
+Member I: Prateek</a>
+<ul>
+<li><a href="#theme" id="toc-theme">Theme</a></li>
+<li><a href="#view-i-variance-decomposition-overview"
+id="toc-view-i-variance-decomposition-overview">View I: Variance
+Decomposition Overview</a></li>
+<li><a href="#view-ii-confounding-effect-analysis"
+id="toc-view-ii-confounding-effect-analysis">View II: Confounding Effect
+Analysis</a></li>
+<li><a href="#view-iii-robustness-check"
+id="toc-view-iii-robustness-check">View III: Robustness Check</a></li>
+<li><a href="#individual-summary" id="toc-individual-summary">Individual
+Summary</a></li>
+</ul></li>
+<li><a href="#team-member-ii-alina-hameed"
+id="toc-team-member-ii-alina-hameed">Team Member II: Alina Hameed</a>
+<ul>
+<li><a href="#theme-1" id="toc-theme-1">Theme</a></li>
+</ul></li>
+<li><a href="#view-i-brain-cell-atlas-dashboard"
+id="toc-view-i-brain-cell-atlas-dashboard">View I: Brain Cell Atlas
+Dashboard</a>
+<ul>
+<li><a href="#title" id="toc-title">Title</a></li>
+<li><a href="#analytic-questions-and-tasks"
+id="toc-analytic-questions-and-tasks">Analytic Questions and
+Tasks</a></li>
+<li><a href="#suitability-of-visualization"
+id="toc-suitability-of-visualization">Suitability of
+Visualization</a></li>
+<li><a href="#view-description-channels"
+id="toc-view-description-channels">View Description &amp;
+Channels</a></li>
+<li><a href="#interaction" id="toc-interaction">Interaction</a></li>
+<li><a href="#critique" id="toc-critique">Critique</a></li>
+</ul></li>
+<li><a href="#view-ii-gene-co-expression-explorer"
+id="toc-view-ii-gene-co-expression-explorer">View II: Gene Co-expression
+Explorer</a>
+<ul>
+<li><a href="#title-1" id="toc-title-1">Title</a></li>
+<li><a href="#analytic-questions-and-tasks-1"
+id="toc-analytic-questions-and-tasks-1">Analytic Questions and
+Tasks</a></li>
+<li><a href="#suitability-of-visualization-1"
+id="toc-suitability-of-visualization-1">Suitability of
+Visualization</a></li>
+<li><a href="#view-description-channels-1"
+id="toc-view-description-channels-1">View Description &amp;
+Channels</a></li>
+<li><a href="#interaction-1" id="toc-interaction-1">Interaction</a></li>
+<li><a href="#critique-1" id="toc-critique-1">Critique</a></li>
+</ul></li>
+<li><a href="#individual-summary-1"
+id="toc-individual-summary-1">Individual Summary</a>
+<ul>
+<li><a href="#with-further-iteration-i-would"
+id="toc-with-further-iteration-i-would">With further iteration, I
+would:</a></li>
+</ul></li>
+<li><a href="#team-member-iii-emily" id="toc-team-member-iii-emily">Team
+Member III: Emily</a></li>
+<li><a
+href="#view-i-sex-biased-activation-across-behaviors-heatmap-linked-bar-chart"
+id="toc-view-i-sex-biased-activation-across-behaviors-heatmap-linked-bar-chart"><strong>View
+I — Sex-Biased Activation Across Behaviors (Heatmap + Linked Bar
+Chart)</strong></a>
+<ul>
+<li><a href="#sex-biased-activation-across-behavioral-conditions"
+id="toc-sex-biased-activation-across-behavioral-conditions"><strong>Sex-Biased
+Activation Across Behavioral Conditions</strong></a></li>
+</ul></li>
+<li><a href="#questions-and-low-level-tasks"
+id="toc-questions-and-low-level-tasks"><strong>Questions and Low-Level
+Tasks</strong></a>
+<ul>
+<li><a href="#analytic-question"
+id="toc-analytic-question"><strong>Analytic Question:</strong></a></li>
+<li><a href="#low-level-tasks-stasko-taxonomy"
+id="toc-low-level-tasks-stasko-taxonomy"><strong>Low-Level Tasks (Stasko
+taxonomy):</strong></a></li>
+</ul></li>
+<li><a href="#view-visualization"
+id="toc-view-visualization"><strong>View
+(Visualization)</strong></a></li>
+<li><a
+href="#describe-the-visualization-and-characteristics-of-channels"
+id="toc-describe-the-visualization-and-characteristics-of-channels"><strong>Describe
+the Visualization and Characteristics of Channels</strong></a>
+<ul>
+<li><a href="#marks" id="toc-marks"><strong>Marks</strong></a></li>
+<li><a href="#channels"
+id="toc-channels"><strong>Channels</strong></a></li>
+<li><a href="#why-these-choices" id="toc-why-these-choices"><strong>Why
+these choices?</strong></a></li>
+</ul></li>
+<li><a
+href="#describe-the-interaction-and-characteristics-of-interaction"
+id="toc-describe-the-interaction-and-characteristics-of-interaction"><strong>Describe
+the Interaction and Characteristics of Interaction</strong></a>
+<ul>
+<li><a href="#imi-interaction-metric-radio-buttons"
+id="toc-imi-interaction-metric-radio-buttons"><strong>IMI Interaction —
+Metric Radio Buttons</strong></a></li>
+<li><a href="#dmi-interaction-click-selection-on-heatmap-linked-view"
+id="toc-dmi-interaction-click-selection-on-heatmap-linked-view"><strong>DMI
+Interaction — Click Selection on Heatmap (Linked View)</strong></a></li>
+<li><a href="#hover-tooltips" id="toc-hover-tooltips"><strong>Hover
+Tooltips</strong></a></li>
+</ul></li>
+<li><a href="#critique-of-the-view"
+id="toc-critique-of-the-view"><strong>Critique of the View</strong></a>
+<ul>
+<li><a href="#what-works-well" id="toc-what-works-well"><strong>What
+works well</strong></a></li>
+<li><a href="#what-could-be-improved"
+id="toc-what-could-be-improved"><strong>What could be
+improved</strong></a></li>
+</ul></li>
+<li><a href="#suitability-for-the-tasks"
+id="toc-suitability-for-the-tasks"><strong>Suitability for the
+Tasks</strong></a></li>
+<li><a
+href="#view-ii-spatial-segregation-of-sex-biased-behavior-circuits"
+id="toc-view-ii-spatial-segregation-of-sex-biased-behavior-circuits"><strong>View
+II — Spatial Segregation of Sex-Biased Behavior Circuits</strong></a>
+<ul>
+<li><a
+href="#spatial-distribution-and-anatomical-segregation-of-sex-biased-activated-neurons"
+id="toc-spatial-distribution-and-anatomical-segregation-of-sex-biased-activated-neurons"><strong>Spatial
+Distribution and Anatomical Segregation of Sex-Biased Activated
+Neurons</strong></a></li>
+</ul></li>
+<li><a href="#questions-and-low-level-tasks-1"
+id="toc-questions-and-low-level-tasks-1"><strong>Questions and Low-Level
+Tasks</strong></a>
+<ul>
+<li><a href="#analytic-question-2"
+id="toc-analytic-question-2"><strong>Analytic Question
+2:</strong></a></li>
+<li><a href="#low-level-tasks-stasko-taxonomy-1"
+id="toc-low-level-tasks-stasko-taxonomy-1"><strong>Low-Level Tasks
+(Stasko taxonomy):</strong></a></li>
+</ul></li>
+<li><a href="#view-description" id="toc-view-description"><strong>View
+(Description)</strong></a></li>
+<li><a
+href="#describe-the-visualization-and-characteristics-of-channels-1"
+id="toc-describe-the-visualization-and-characteristics-of-channels-1"><strong>Describe
+the Visualization and Characteristics of Channels</strong></a>
+<ul>
+<li><a href="#marks-1" id="toc-marks-1"><strong>Marks</strong></a></li>
+<li><a href="#channels-1"
+id="toc-channels-1"><strong>Channels</strong></a></li>
+<li><a href="#why-these-choices-1"
+id="toc-why-these-choices-1"><strong>Why these
+choices?</strong></a></li>
+</ul></li>
+<li><a
+href="#describe-the-interaction-and-characteristics-of-interactivity"
+id="toc-describe-the-interaction-and-characteristics-of-interactivity"><strong>Describe
+the Interaction and Characteristics of Interactivity</strong></a>
+<ul>
+<li><a href="#imi-1-behavior-dropdown"
+id="toc-imi-1-behavior-dropdown"><strong>IMI #1 — Behavior
+Dropdown</strong></a></li>
+<li><a href="#dmi-1-spatial-brush-on-scatterplot-bi-directional-link"
+id="toc-dmi-1-spatial-brush-on-scatterplot-bi-directional-link"><strong>DMI
+#1 — Spatial Brush on Scatterplot (Bi-directional
+Link)</strong></a></li>
+<li><a href="#dmi-2-click-selection-on-bregma-bins"
+id="toc-dmi-2-click-selection-on-bregma-bins"><strong>DMI #2 — Click
+Selection on Bregma Bins</strong></a></li>
+<li><a href="#additional-hover-interaction"
+id="toc-additional-hover-interaction"><strong>Additional Hover
+Interaction</strong></a></li>
+</ul></li>
+<li><a href="#critique-of-the-view-1"
+id="toc-critique-of-the-view-1"><strong>Critique of the
+View</strong></a>
+<ul>
+<li><a href="#what-works-well-1" id="toc-what-works-well-1"><strong>What
+Works Well</strong></a></li>
+<li><a href="#areas-for-improvement"
+id="toc-areas-for-improvement"><strong>Areas for
+Improvement</strong></a></li>
+</ul></li>
+<li><a href="#suitability-for-the-task"
+id="toc-suitability-for-the-task"><strong>Suitability for the
+Task</strong></a></li>
+<li><a href="#team-member-iv-vincy" id="toc-team-member-iv-vincy">Team
+Member IV: Vincy</a>
+<ul>
+<li><a href="#some-advanced-data-wrangling"
+id="toc-some-advanced-data-wrangling">Some advanced data
+wrangling</a></li>
+<li><a
+href="#theme-exploring-anatomical-location-of-cells-and-their-gene-expressions"
+id="toc-theme-exploring-anatomical-location-of-cells-and-their-gene-expressions"><strong>Theme:
+</u>Exploring anatomical location of cells and their gene
+expressions</u></strong></a></li>
+<li><a
+href="#view-i-spatial-distribution-of-social-gene-expression-on-single-brain-slice"
+id="toc-view-i-spatial-distribution-of-social-gene-expression-on-single-brain-slice">View
+I: Spatial distribution of social gene expression on single brain
+slice</a></li>
+<li><a
+href="#view-ii-expression-and-co-expression-patterns-from-anterior-to-posterior-part-of-brain"
+id="toc-view-ii-expression-and-co-expression-patterns-from-anterior-to-posterior-part-of-brain">View
+II: Expression and co-expression patterns from anterior to posterior
+part of brain</a></li>
+<li><a href="#individual-summary-2"
+id="toc-individual-summary-2">Individual Summary</a></li>
+</ul></li>
+<li><a href="#group-summary" id="toc-group-summary">Group Summary</a>
+<ul>
+<li><a href="#spatial-and-molecular-identity"
+id="toc-spatial-and-molecular-identity">Spatial and Molecular
+Identity</a></li>
+<li><a href="#sex-specific-activation"
+id="toc-sex-specific-activation">Sex-Specific Activation</a></li>
+<li><a href="#variance-robustness" id="toc-variance-robustness">Variance
+&amp; Robustness</a></li>
+<li><a href="#overall-takeaways" id="toc-overall-takeaways">Overall
+Takeaways</a></li>
+</ul></li>
+</ul>
+</nav>
+<h2 id="project-milestone-3-report-section">Project Milestone 3: Report
+Section</h2>
+<h2 id="overview">Overview</h2>
+<p>This project investigates how neuronal gene expression varies across
+spatial regions, cell clusters, behaviors, and sexes in the hypothalamic
+preoptic area of mice. Using MERFISH data, we focus on key genes (e.g.,
+Fos, Gal, Th, Bdnf, Adcyap1, Esr1, Oxtr, Gnrh1, Slc17a6, Gad1) and
+examine patterns across Excitatory, Inhibitory, and Ambiguous neuronal
+classes. The analyses combine spatial mapping, cluster-level
+comparisons, and sex-stratified gene expression to highlight
+heterogeneity, sex dimorphism, and behavior-driven activation.
+Visualizations are designed to clarify these patterns, allowing
+researchers to identify key clusters, co-expression networks, and
+extreme gene expressors in different conditions.</p>
+<h2 id="audience">Audience</h2>
+<p>This report is intended for neuroscientists, computational
+biologists, and behavioral researchers who are interested in single-cell
+gene expression dynamics in the hypothalamus. It is also useful for lab
+members or students seeking insights into sex- and behavior-specific
+activation patterns, spatial cluster organization, and the functional
+role of key neuromodulators.</p>
+<h2 id="dataset">Dataset</h2>
+<p>The dataset includes approximately 50,000 neurons across multiple
+mice, annotated with behavior (Naïve, Parenting, Mating, Aggression),
+biological sex, Bregma slice, cell class, cluster ID, and expression for
+155–160 genes. Cells were filtered to focus on neuronal populations, and
+key genes were selected based on relevance to social behavior, hormone
+signaling, and neural activity. Preprocessing included downsampling for
+computational efficiency, normalization, and exclusion of non-neuronal
+cells.</p>
+<h2 id="general-takeaways">General Takeaways</h2>
+<p>From this dataset, the audience should be able to explore patterns of
+neuronal heterogeneity across behaviors, sexes, and spatial locations.
+Key findings include behavior-driven activation (e.g., Fos upregulation
+during Parenting/Mating/Aggression), sex-specific expression of hormone
+receptors (Esr1, Oxtr), and co-expression networks among neuromodulatory
+genes (Gal, Th, Bdnf, Adcyap1). Visualizations allow identification of
+cluster-specific activation, spatial segregation of sex-biased circuits,
+and extreme gene expressors. Overall, the analyses reveal how neuronal
+populations dynamically encode social behavior, emphasizing sex
+differences and functional specialization in hypothalamic circuits.</p>
+<hr />
+<h2 id="team-member-i-prateek">Team Member I: Prateek</h2>
+<h3 id="theme">Theme</h3>
+<p><strong>Quantifying Sources of Variation:</strong> The primary focus
+is to distinguish gene expression differences attributable to biological
+sex from those caused by individual animal-to-animal variability (batch
+effects).</p>
+<h3 id="view-i-variance-decomposition-overview">View I: Variance
+Decomposition Overview</h3>
+<p><strong>Title:</strong> Splitting the Differences: Sex vs. Animal ID
+Variance</p>
+<p><strong>Analytic Questions and Tasks:</strong> For the most abundant
+neuronal clusters, what percentage of the total gene expression
+variability is explained by Animal Sex versus Animal ID? -
+<strong>Retrieve Value:</strong> Obtain the precise percentage of
+variance (<span class="math inline"><em>η</em><sup>2</sup></span>) for
+specific genes. - <strong>Filter:</strong> Focus the analysis on
+specific, high-abundance neuronal clusters. - <strong>Find
+Extremum:</strong> Identify genes exhibiting the strongest sex-driven or
+ID-driven variance.</p>
+<p><img src="../images/DSCI320PM3View1.png" /></p>
+<p><strong>Suitability of Visualization:</strong> The multi-view
+approach is highly effective. The scatter plot allows for the
+simultaneous comparison of two quantitative variables (<span
+class="math inline"><em>η</em><sub><em>S</em><em>e</em><em>x</em></sub><sup>2</sup></span>
+vs. <span
+class="math inline"><em>η</em><sub><em>I</em><em>D</em></sub><sup>2</sup></span>),
+making it easy to find extremes (genes far from the diagonal). The
+stacked bar chart complements this by showing the part-to-whole
+relationship of the variance components for the filtered cluster.</p>
+<p><strong>View Description &amp; Channels:</strong> A dashboard with
+three coordinated views: a gene-level scatter plot (left) showing <span
+class="math inline"><em>η</em><sub><em>S</em><em>e</em><em>x</em></sub><sup>2</sup></span>
+vs. <span
+class="math inline"><em>η</em><sub><em>I</em><em>D</em></sub><sup>2</sup></span>,
+a histogram of variance distribution (middle), and a normalized stacked
+bar chart (right) showing the aggregate variance for the selected
+cluster. - <strong>Marks:</strong> Points for individual genes in the
+scatter plot; Bars for aggregated data in the histogram and stacked bar
+chart. - <strong>Channels:</strong> - <strong>Position
+(Spatial):</strong> On the scatter plot, the horizontal position encodes
+<span
+class="math inline"><em>η</em><sub><em>I</em><em>D</em></sub><sup>2</sup></span>
+and vertical position encodes <span
+class="math inline"><em>η</em><sub><em>S</em><em>e</em><em>x</em></sub><sup>2</sup></span>.
+This uses spatial separation to allow for rapid comparison of the two
+factors. - <strong>Length/Height:</strong> In the bar charts, length
+encodes the quantitative proportion of variance. - <strong>Color
+(Nominal):</strong> In the stacked bar chart, distinct hues
+differentiate the variance sources (“Sex” vs. “ID”).</p>
+<p><strong>Interaction:</strong> - <strong>Dropdown Selection
+(Filtering):</strong> A dropdown menu allows the user to filter the
+entire dashboard by Neuronal Cluster, reducing visual clutter and
+focusing the analysis. - <strong>Slider (Filtering):</strong> A slider
+filters genes based on a minimum <span
+class="math inline"><em>η</em><sub><em>S</em><em>e</em><em>x</em></sub><sup>2</sup></span>
+threshold, allowing the user to remove low-variance “noise” and focus on
+significant markers. - <strong>Brush &amp; Link
+(Cross-Filtering):</strong> An interval selection (brush) on the scatter
+plot is linked to the other views. Selecting a group of genes in the
+scatter plot filters the histogram and highlights their aggregate
+contribution in the stacked bar chart, providing immediate visual
+feedback on their distribution.</p>
+<p><strong>Critique:</strong> This view effectively separates global
+patterns from gene-level specifics. The scatter plot’s spatial encoding
+is excellent for spotting correlations and outliers. However, the
+primary limitation is occlusion in the scatter plot due to the large
+number of genes, making individual points hard to resolve in dense
+areas. While the slider helps mitigate this by filtering, future
+iterations could explore density-based visualizations (like hexagonal
+binning) to better represent crowded regions.</p>
+<h3 id="view-ii-confounding-effect-analysis">View II: Confounding Effect
+Analysis</h3>
+<p><strong>Title:</strong> Impact of Batch Correction on Sex
+Differences</p>
+<p><strong>Analytic Questions and Tasks:</strong> Are there genes with
+large apparent sex differences that are significantly reduced when
+correcting for individual animal effects? - <strong>Compare:</strong>
+Directly contrast the Original Log-Fold Change (LFC) with the Corrected
+LFC for each gene. - <strong>Compute/Assess:</strong> Evaluate the
+magnitude of the “correction shift” (the residual difference).</p>
+<p><img src="../images/DSCI320PM3View2.png" /></p>
+<p><strong>Suitability of Visualization:</strong> The lollipop plot is
+an ideal choice for this comparison task. The explicit line connecting
+the “Original” and “Corrected” points for each gene provides a stronger
+perceptual cue for evaluating change than side-by-side bars would.</p>
+<p><strong>View Description &amp; Channels:</strong> A dashboard
+featuring a scatter plot of Original vs. Corrected LFC (left) linked to
+a lollipop plot highlighting top genes (right), with a histogram of
+residuals below. - <strong>Marks:</strong> Points and Lines form the
+lollipop glyphs, explicitly linking the two states of a single gene.
+Points are used in the scatter plot. Bars in histogram. -
+<strong>Channels:</strong> - <strong>Length (Delta):</strong> The length
+of the lollipop stick visually encodes the magnitude of the batch effect
+correction. - <strong>Color (Nominal):</strong> Red and blue denote the
+“Original” and “Corrected” states, respectively. - <strong>Position
+relative to Identity Line:</strong> In the scatter plot, a point’s
+distance from the <span
+class="math inline"><em>y</em> = <em>x</em></span> diagonal indicates
+the degree of correction.</p>
+<p><strong>Interaction:</strong> - <strong>Brush &amp; Link
+(Cross-Filtering):</strong> An interval selection on the global scatter
+plot filters the lollipop plot to show only the selected genes, allowing
+users to drill down from the overview to specific examples. -
+<strong>Radio Button (Sorting/Encoding):</strong> A radio button allows
+the user to re-sort the lollipop plot (e.g., by original LFC or by
+correction magnitude), facilitating different comparison tasks.</p>
+<p><strong>Critique:</strong> The lollipop plot is highly effective for
+the compare task, leveraging the Gestalt principle of connectivity to
+show the shift in values. A potential downside is that the global
+scatter plot relies on interpreting distance from the diagonal, which
+can be less intuitive for some users than direct comparison. Adding the
+histogram of residuals helps by providing a clear summary of the
+distribution of correction magnitudes.</p>
+<h3 id="view-iii-robustness-check">View III: Robustness Check</h3>
+<p><strong>Title:</strong> Biological Consistency Across Animals</p>
+<p><strong>Analytic Questions and Tasks:</strong> Is the observed sex
+difference for a given gene consistent across all animals, or is it
+driven by a few outliers? - <strong>Characterize Distribution:</strong>
+Assess the spread and central tendency of gene expression across
+individual cells and animals. - <strong>Find Anomalies
+(Outliers):</strong> Identify individual animals or cells that deviate
+significantly from the group pattern.</p>
+<p><img src="../images/DSCI320PM3View3.png" /></p>
+<p><strong>Suitability of Visualization:</strong> A jittered strip plot
+is superior to a box plot for this task because it displays the raw data
+points. This reveals the true sample size, underlying distribution, and
+presence of distinct subpopulations, which summary statistics (like
+quartiles in a box plot) can hide.</p>
+<p><strong>View Description &amp; Channels:</strong> A dashboard
+combining a jittered strip plot (left), a mean bar chart with error bars
+(middle), and a sample-level heatmap (right). - <strong>Marks:</strong>
+Points for individual cells in the strip plot; Bars for means. -
+<strong>Channels:</strong> - <strong>Position (Y-axis):</strong> Encodes
+the quantitative gene expression level. - <strong>Color
+(Nominal):</strong> Points are colored by <code>Animal_ID</code>,
+allowing for rapid identification of data from specific individuals. -
+<strong>Spatial Jitter:</strong> Random horizontal displacement is added
+to points to reduce occlusion and reveal local density.</p>
+<p><strong>Interaction:</strong> - <strong>Dropdown Selection
+(Parameterization):</strong> Users select a specific gene (e.g.,
+<em>Esr1</em>, <em>Oxtr</em>) from a dropdown, which updates all views
+to show data for that gene. - <strong>Cross-Filtering:</strong>
+Selecting specific animals in the heatmap filters the strip plot to show
+only cells from those individuals, enabling focused comparison.</p>
+<p><strong>Critique:</strong> This view prioritizes transparency over
+summarization. By showing every cell as a point, it avoids the potential
+ecological fallacies of aggregated data. Coloring by
+<code>Animal_ID</code> is highly effective for the find anomalies task.
+The main limitation is scalability; with a very large number of cells,
+the strip plot can become cluttered. The cross-filtering capability from
+the heatmap is a crucial feature that mitigates this by allowing users
+to zoom in on subsets of the data.</p>
+<h3 id="individual-summary">Individual Summary</h3>
+<p>My analysis focused on disentangling biological sex differences from
+technical batch effects (Animal ID). I structured my approach in three
+stages: a high-level variance decomposition (View I), a direct
+evaluation of the correction method (View II), and a granular robustness
+check at the individual animal level (View III).</p>
+<p>A key realization was that while summary statistics (like those in
+View I’s bar charts) are useful for general trends, they often obscure
+crucial underlying distributions. This motivated the design of View III,
+where I chose a jittered strip plot over a standard box plot. This
+decision was critical for assessing whether a “sex difference” was a
+consistent biological phenomenon across animals or an artifact driven by
+outliers.</p>
+<p>A significant challenge was managing visual complexity in crowded
+plots. In View I, the gene-level scatter plot suffered from severe
+occlusion. While interaction (filtering/brushing) helped, a static
+solution like density binning might have been more effective for the
+overview. However, the “lollipop” design in View II proved highly
+successful, offering a clearer visual representation of change than
+alternative designs like grouped bar charts. Ultimately, this suite of
+visualization tools enables a user to not only identify potential
+sex-linked genes but to rigorously evaluate the reliability and
+robustness of those signals against confounding noise.</p>
+<hr />
+<h2 id="team-member-ii-alina-hameed">Team Member II: Alina Hameed</h2>
+<h3 id="theme-1">Theme</h3>
+<p><strong>Spatial Organization and Molecular Identity of Neural Cell
+Classes</strong><br />
+The primary focus is to understand how different neural cell classes are
+distributed across brain regions and how molecular features—particularly
+<strong>Gad1</strong> expression—distinguish neuronal subtypes. The
+central question is how spatial location relates to molecular identity,
+and whether gene expression patterns validate or refine cell class
+definitions.</p>
+<hr />
+<h2 id="view-i-brain-cell-atlas-dashboard">View I: Brain Cell Atlas
+Dashboard</h2>
+<h3 id="title">Title</h3>
+<p><strong>Spatial Distribution and Regional Composition Across Brain
+Slices</strong></p>
+<h3 id="analytic-questions-and-tasks">Analytic Questions and Tasks</h3>
+<p><strong>Where are different cell classes located in the brain, and
+how does their distribution change across the anterior–posterior
+axis?</strong></p>
+<ul>
+<li><p><strong>Locate:</strong> Identify where specific cell classes
+(Excitatory, Inhibitory, Glia, Vasculature, Ependymal, Other) appear in
+anatomical space.<br />
+</p></li>
+<li><p><strong>Characterize Distribution:</strong> Examine how each cell
+class is distributed along the Y-axis using ridge plots.<br />
+</p></li>
+<li><p><strong>Compare:</strong> Contrast cell class composition across
+bregma slices.<br />
+</p></li>
+<li><p><strong>Distinguish:</strong> Differentiate cell classes based on
+spatial organization.<br />
+</p></li>
+<li><p><strong>Summarize:</strong> Aggregate cell counts by class and
+slice to reveal compositional trends.</p>
+<p><img src="../images/visualization1.png" /></p></li>
+</ul>
+<h3 id="suitability-of-visualization">Suitability of Visualization</h3>
+<p>The multi-view structure is highly effective for connecting
+single-cell data to global spatial patterns. The spatial scatter plot
+provides direct mapping to anatomical coordinates, revealing six
+distinct tissue sections arranged in a grid. The ridge plots reveal how
+cell classes segregate along the Y-axis, while the stacked bar chart
+summarizes global composition by slice. Together, these views enable
+both fine-grained and high-level spatial reasoning.</p>
+<h3 id="view-description-channels">View Description &amp; Channels</h3>
+<p>A coordinated dashboard with three views arranged as:<br />
+<strong>(Spatial Scatter | Composition Bar Chart &amp; Ridge
+Plots)</strong></p>
+<ul>
+<li><strong>Left:</strong> Spatial scatter plot of all cells by centroid
+X and Y<br />
+</li>
+<li><strong>Right–Top:</strong> Stacked bar chart showing class
+composition across bregma slices<br />
+</li>
+<li><strong>Right–Bottom:</strong> Ridge plots showing Y-axis density by
+cell class</li>
+</ul>
+<p><strong>Marks:</strong><br />
+Points for cells, area marks for ridgelines, stacked bars for
+composition.</p>
+<p><strong>Channels:</strong></p>
+<ul>
+<li><strong>Position (Spatial):</strong> X and Y encode true anatomical
+coordinates.<br />
+</li>
+<li><strong>Color (Nominal):</strong> Cell class is encoded consistently
+across all views:
+<ul>
+<li>Red/Coral: Excitatory<br />
+</li>
+<li>Blue: Inhibitory<br />
+</li>
+<li>Green: Glia<br />
+</li>
+<li>Orange: Vasculature<br />
+</li>
+<li>Purple: Ependymal<br />
+</li>
+</ul></li>
+<li><strong>Area/Width:</strong> In ridge plots, width encodes
+density.<br />
+</li>
+<li><strong>Length:</strong> In stacked bars, height encodes cell
+count.</li>
+</ul>
+<h3 id="interaction">Interaction</h3>
+<ul>
+<li><strong>Brush &amp; Link (Cross-filtering):</strong> Selecting cells
+in the spatial plot updates ridge plots and composition bars.<br />
+</li>
+<li><strong>Legend Filtering:</strong> Clicking class labels filters all
+views.<br />
+</li>
+<li><strong>Hover (Details-on-Demand):</strong> Tooltips show
+coordinates, class, and metadata.<br />
+</li>
+<li><strong>Click Selection:</strong> Selecting bars or ridge regions
+highlights spatial locations.</li>
+</ul>
+<h3 id="critique">Critique</h3>
+<p>This view supports multi-scale analysis from individual cells to
+tissue-wide composition. Color consistency effectively reduces cognitive
+load, and ridge plots clearly reveal that Ependymal cells cluster at low
+Y-values (ventral regions), while others overlap more centrally.
+However, severe occlusion in the spatial plot makes local density hard
+to interpret. Density overlays or hexagonal binning would substantially
+improve readability. Additionally, the use of absolute counts in the
+composition chart limits cross-slice comparison; normalized (100%) bars
+would better convey relative structure.</p>
+<hr />
+<h2 id="view-ii-gene-co-expression-explorer">View II: Gene Co-expression
+Explorer</h2>
+<h3 id="title-1">Title</h3>
+<p><strong>Gad1 Co-expression Explorer: Neuron Type Validation Through
+Molecular Signatures</strong></p>
+<h3 id="analytic-questions-and-tasks-1">Analytic Questions and
+Tasks</h3>
+<p><strong>How does Gad1 expression distinguish Excitatory and
+Inhibitory neurons, and how does it relate to other marker
+genes?</strong></p>
+<ul>
+<li><p><strong>Compare:</strong> Contrast Gad1 distributions.<br />
+</p></li>
+<li><p><strong>Correlate:</strong> Examine relationships between Gad1
+and selected genes (e.g., Sst).<br />
+</p></li>
+<li><p><strong>Filter:</strong> Brush Gad1 ranges to isolate
+subpopulations.<br />
+</p></li>
+<li><p><strong>Retrieve Value:</strong> Access individual cell
+expression values.<br />
+</p></li>
+<li><p><strong>Find Extremum:</strong> Identify extreme expressers.</p>
+<p><img src="../images/visualization2.png" /></p></li>
+</ul>
+<h3 id="suitability-of-visualization-1">Suitability of
+Visualization</h3>
+<p>The violin plot exposes full distribution shape, validating the
+molecular distinction between cell types. The scatter plot shows
+co-expression patterns at the single-cell level, and the stacked bar
+summarizes cell type composition in the selected Gad1 range. This triad
+effectively links univariate, bivariate, and aggregate analysis.</p>
+<h3 id="view-description-channels-1">View Description &amp;
+Channels</h3>
+<p>A dashboard with three linked views arranged as:<br />
+<strong>(Violin Plot | Co-expression Scatter | Summary Bar
+Chart)</strong></p>
+<ul>
+<li><strong>Violin:</strong> Gad1 distribution by neuron type<br />
+</li>
+<li><strong>Scatter:</strong> Gad1 vs. chosen marker gene<br />
+</li>
+<li><strong>Bar Chart:</strong> Class composition for brushed range</li>
+</ul>
+<p><strong>Marks:</strong><br />
+Area for violins, points for scatter, bars for composition.</p>
+<p><strong>Channels:</strong></p>
+<ul>
+<li><strong>Position (Quantitative):</strong>
+<ul>
+<li>Gad1 mapped to violin Y-axis and scatter X-axis<br />
+</li>
+<li>Marker gene mapped to scatter Y-axis<br />
+</li>
+</ul></li>
+<li><strong>Width:</strong> Density in violins<br />
+</li>
+<li><strong>Color:</strong> Neuron class (Red = Excitatory, Blue =
+Inhibitory)<br />
+</li>
+<li><strong>Length:</strong> Cell count in bars</li>
+</ul>
+<h3 id="interaction-1">Interaction</h3>
+<ul>
+<li><strong>Dropdown (Parameterization):</strong> Select marker gene for
+scatter Y-axis.<br />
+</li>
+<li><strong>Brush (Filtering):</strong> Select Gad1 range directly on
+the violin.<br />
+</li>
+<li><strong>Cross-linking:</strong> Selection highlights corresponding
+cells and updates counts.<br />
+</li>
+<li><strong>Tooltips:</strong> Display precise expression values.</li>
+</ul>
+<h3 id="critique-1">Critique</h3>
+<p>The violin plot clearly demonstrates non-overlapping Gad1
+distributions, providing strong biological validation of cell classes.
+The scatter plot reveals heterogeneity among inhibitory neurons,
+particularly in Sst expression. However, overplotting in dense regions
+reduces interpretability. Statistical summaries such as correlation
+coefficients and reference thresholds would further strengthen
+analytical rigor. The right panel title is also misleading—it summarizes
+class composition, not gene distribution.</p>
+<hr />
+<h2 id="individual-summary-1">Individual Summary</h2>
+<p>My work focused on linking spatial organization (View I) and
+molecular identity (View II) to characterize neural cell classes. This
+reflects a core neuroscience principle: neuronal identity arises from
+both anatomical context and gene expression.</p>
+<p>A major design choice was using violin plots instead of box plots in
+View II. This revealed the complete separation of Gad1 expression
+between Excitatory and Inhibitory neurons—an essential biological
+insight that summary statistics would obscure. Similarly, I
+intentionally showed individual cells in View I to avoid masking
+heterogeneity, even though this introduced severe occlusion.</p>
+<p>The central challenge was overplotting. Alpha transparency was
+insufficient, and in retrospect I should have implemented density-based
+representations for overview with semantic zoom to reveal individual
+points at higher resolution. Despite this, maintaining consistent color
+encoding across views enabled intuitive cross-view tracing of cell
+classes.</p>
+<h3 id="with-further-iteration-i-would">With further iteration, I
+would:</h3>
+<ul>
+<li>Add adaptive density rendering<br />
+</li>
+<li>Include statistical summaries (correlation coefficients, confidence
+intervals)<br />
+</li>
+<li>Normalize composition charts<br />
+</li>
+<li>Integrate spatial origin into molecular views<br />
+</li>
+<li>Add biologically meaningful reference annotations</li>
+</ul>
+<p>Together, these improvements would better balance expressiveness with
+efficiency—supporting both exploratory insight and confirmatory
+analysis.</p>
+<h2 id="team-member-iii-emily">Team Member III: Emily</h2>
+<h2
+id="view-i-sex-biased-activation-across-behaviors-heatmap-linked-bar-chart"><strong>View
+I — Sex-Biased Activation Across Behaviors (Heatmap + Linked Bar
+Chart)</strong></h2>
+<h3
+id="sex-biased-activation-across-behavioral-conditions"><strong>Sex-Biased
+Activation Across Behavioral Conditions</strong></h3>
+<h2 id="questions-and-low-level-tasks"><strong>Questions and Low-Level
+Tasks</strong></h2>
+<h3 id="analytic-question"><strong>Analytic Question:</strong></h3>
+<p><em>Do male and female mice activate the same neuronal clusters
+during parenting, mating, and aggression, or are there sex-specific
+activation patterns?</em></p>
+<h3 id="low-level-tasks-stasko-taxonomy"><strong>Low-Level Tasks (Stasko
+taxonomy):</strong></h3>
+<ul>
+<li><strong>Filter:</strong> <em>Select a specific sex-bias metric to
+re-encode the heatmap.</em><br />
+</li>
+<li><strong>Compare:</strong> <em>Compare female vs. male activation per
+cluster × behavior.</em><br />
+</li>
+<li><strong>Characterize Distribution:</strong> <em>Examine how sex bias
+varies across behaviors and clusters.</em><br />
+</li>
+<li><strong>Find Anomalies:</strong> <em>Identify unusually biased
+clusters or conditions.</em><br />
+</li>
+<li><strong>Details-on-demand:</strong> <em>View exact activation counts
+for a selected cluster–behavior pair.</em></li>
+</ul>
+<hr />
+<h2 id="view-visualization"><strong>View (Visualization)</strong></h2>
+<figure>
+<img src="../images/emily-view1.png" alt="View 1" />
+<figcaption aria-hidden="true">View 1</figcaption>
+</figure>
+<p>This view consists of an <strong>interactive heatmap</strong> paired
+with a <strong>linked bar chart</strong>.<br />
+The heatmap displays activation of neuronal clusters across behavioral
+conditions, with rows representing <em>Neuron_cluster_ID</em> and
+columns representing <em>Behavior</em>. Each cell encodes the
+<strong>sex-bias of activated cells</strong> using a diverging color
+scale.</p>
+<p>Above the heatmap, I include a <strong>radio-button widget</strong>
+that allows the user to switch between three metrics:</p>
+<ul>
+<li><em>Female − Male difference</em><br />
+</li>
+<li><em>Female proportion</em><br />
+</li>
+<li><em>Male proportion</em></li>
+</ul>
+<p>Clicking a heatmap cell triggers a <strong>linked bar chart</strong>
+to the right, which shows the exact <code>female_n</code> and
+<code>male_n</code> activated cell counts for that cluster–behavior
+pair.</p>
+<p>This two-part design supports: - <strong>global pattern
+identification</strong> (via heatmap)<br />
+- <strong>precise numerical inspection</strong> (via bar chart)</p>
+<hr />
+<h2
+id="describe-the-visualization-and-characteristics-of-channels"><strong>Describe
+the Visualization and Characteristics of Channels</strong></h2>
+<h3 id="marks"><strong>Marks</strong></h3>
+<ul>
+<li>Rectangles <em>(heatmap cells)</em><br />
+</li>
+<li>Bars <em>(counts of activated cells)</em></li>
+</ul>
+<h3 id="channels"><strong>Channels</strong></h3>
+<h4 id="color-diverging-blueorange"><strong>Color (diverging,
+blue–orange)</strong></h4>
+<ul>
+<li>Encodes sex bias (<code>sex_diff</code>, <code>female_prop</code>,
+or <code>male_prop</code>).<br />
+</li>
+<li>A diverging palette is appropriate because <em>sex_diff has a
+meaningful zero point</em>, making polarity between male- and
+female-biased activation intuitive.</li>
+</ul>
+<h4 id="position-x-axis"><strong>Position (x-axis)</strong></h4>
+<ul>
+<li>Encodes <strong>Behavior</strong> in a consistent left-to-right
+order <em>(Naive → Parenting → Aggression)</em>.<br />
+</li>
+<li>Supports conceptual comparison.</li>
+</ul>
+<h4 id="position-y-axis"><strong>Position (y-axis)</strong></h4>
+<ul>
+<li>Encodes <strong>Neuron_cluster_ID</strong>.<br />
+</li>
+<li>Vertical grouping supports scanning across behaviors.</li>
+</ul>
+<h4 id="length-bar-chart"><strong>Length (bar chart)</strong></h4>
+<ul>
+<li>Encodes magnitude of female vs male activated cell counts.</li>
+</ul>
+<h3 id="why-these-choices"><strong>Why these choices?</strong></h3>
+<p>Sex-based comparative analysis benefits from: - <strong>fast global
+pattern detection</strong> → best handled by <strong>color in a
+matrix</strong><br />
+- <strong>precise quantitative lookup</strong> → best handled by
+<strong>bar charts</strong></p>
+<p>This aligns with course visualization principles:<br />
+Use strong perceptual channels (color, position) for pattern recognition
+and length for quantitative precision.</p>
+<hr />
+<h2
+id="describe-the-interaction-and-characteristics-of-interaction"><strong>Describe
+the Interaction and Characteristics of Interaction</strong></h2>
+<h3 id="imi-interaction-metric-radio-buttons"><strong>IMI Interaction —
+Metric Radio Buttons</strong></h3>
+<p>Implemented using an <code>alt.param</code>.<br />
+Users toggle among three encodings of sex bias.</p>
+<p><strong>Supports tasks:</strong> - <em>Filter:</em> switches the
+displayed metric<br />
+- <em>Compare:</em> examine male vs female activation under different
+definitions</p>
+<p><strong>Why:</strong><br />
+Different metrics highlight different aspects of sex bias.<br />
+Giving users control avoids relying on a single potentially misleading
+encoding.</p>
+<hr />
+<h3
+id="dmi-interaction-click-selection-on-heatmap-linked-view"><strong>DMI
+Interaction — Click Selection on Heatmap (Linked View)</strong></h3>
+<p>Implemented with <code>selection_point</code>.<br />
+Clicking a heatmap cell updates the bar chart with exact counts.</p>
+<p><strong>Supports tasks:</strong> - <em>Compare:</em> directly compare
+sexes numerically<br />
+- <em>Find Anomalies:</em> check if extreme colors arise from small or
+large counts<br />
+- <em>Details-on-demand:</em> exact values displayed</p>
+<p><strong>Why:</strong><br />
+Color alone lacks precision; the bar chart provides necessary numerical
+detail.</p>
+<hr />
+<h3 id="hover-tooltips"><strong>Hover Tooltips</strong></h3>
+<p>Provide: - Cluster ID<br />
+- Behavior<br />
+- Metric name<br />
+- Metric value<br />
+- Total activated count</p>
+<p><strong>Supports tasks:</strong><br />
+<em>Details-on-demand</em>, <em>Characterize Distribution</em></p>
+<hr />
+<h2 id="critique-of-the-view"><strong>Critique of the View</strong></h2>
+<h3 id="what-works-well"><strong>What works well</strong></h3>
+<ul>
+<li>The heatmap clearly shows global sex-bias patterns.<br />
+</li>
+<li>The metric radio buttons allow flexible biological
+interpretation.<br />
+</li>
+<li>The linked bar chart grounds color impressions in actual
+counts.<br />
+</li>
+<li>Consistent behavior ordering supports cross-view comparison.</li>
+</ul>
+<h3 id="what-could-be-improved"><strong>What could be
+improved</strong></h3>
+<ul>
+<li>Small-count clusters may mislead; a minimum-count slider (planned
+for PM4) would help.<br />
+</li>
+<li>Heatmap height grows with cluster count; collapsible cluster groups
+could help.<br />
+</li>
+<li>Adding confidence intervals could contextualize large sex
+differences.</li>
+</ul>
+<hr />
+<h2 id="suitability-for-the-tasks"><strong>Suitability for the
+Tasks</strong></h2>
+<p>This view directly answers the analytic question and fully supports
+the required low-level tasks.<br />
+The combination of: - <strong>high-level pattern visualization</strong>
+(heatmap)<br />
+- <strong>interactive detail view</strong> (bar chart)</p>
+<p>enables exploration and interpretation grounded in the data.</p>
+<p><strong>Overall, I think this is a strong and effective visualization
+aligned with analytical goals and course principles.</strong></p>
+<h2
+id="view-ii-spatial-segregation-of-sex-biased-behavior-circuits"><strong>View
+II — Spatial Segregation of Sex-Biased Behavior Circuits</strong></h2>
+<h3
+id="spatial-distribution-and-anatomical-segregation-of-sex-biased-activated-neurons"><strong>Spatial
+Distribution and Anatomical Segregation of Sex-Biased Activated
+Neurons</strong></h3>
+<hr />
+<h2 id="questions-and-low-level-tasks-1"><strong>Questions and Low-Level
+Tasks</strong></h2>
+<h3 id="analytic-question-2"><strong>Analytic Question 2:</strong></h3>
+<p><em>Are sex-biased behaviorally activated neurons spatially
+segregated within the preoptic region?</em></p>
+<h3 id="low-level-tasks-stasko-taxonomy-1"><strong>Low-Level Tasks
+(Stasko taxonomy):</strong></h3>
+<ul>
+<li><strong>Locate:</strong> <em>Identify where activated neurons lie in
+(X, Y) anatomical space.</em><br />
+</li>
+<li><strong>Cluster:</strong> <em>Detect visually coherent spatial
+clusters enriched for each sex.</em><br />
+</li>
+<li><strong>Compare:</strong> <em>Contrast spatial patterns for male vs
+female neurons across behaviors.</em><br />
+</li>
+<li><strong>Summarize:</strong> <em>Examine sex bias aggregated within
+anatomical subregions (Bregma bins).</em><br />
+</li>
+<li><strong>Filter:</strong> <em>Adjust which subset of neurons is
+displayed by selecting a behavior.</em><br />
+</li>
+<li><strong>Details-on-demand:</strong> <em>Hover to inspect local
+anatomical and gene-expression details.</em></li>
+</ul>
+<p>All tasks relate directly to investigating spatial segregation of
+functional circuits.</p>
+<hr />
+<h2 id="view-description"><strong>View (Description)</strong></h2>
+<figure>
+<img src="../images/emily-view2.png" alt="View 2" />
+<figcaption aria-hidden="true">View 2</figcaption>
+</figure>
+<p>This view is composed of <strong>three coordinated
+visualizations</strong>, arranged to allow users to explore anatomical
+segregation from whole-region patterns down to specific local
+subregions:</p>
+<ol type="1">
+<li><strong>Spatial scatterplot</strong> of activated neurons in
+<em>Centroid_X × Centroid_Y</em> space, colored and shaped by sex.
+<ul>
+<li>Provides the main spatial map of where neurons lie in the preoptic
+region.</li>
+</ul></li>
+<li><strong>Sex bias by Bregma bin</strong> <em>(female proportion per
+anatomical slice)</em>.
+<ul>
+<li>Each bin acts as a coarse anatomical proxy, showing which subregions
+are predominantly male- or female-biased.</li>
+</ul></li>
+<li><strong>Sex counts within a brushed spatial region.</strong>
+<ul>
+<li>Brushing on the scatterplot updates this panel with the local sex
+ratio inside the selected anatomical area.</li>
+</ul></li>
+</ol>
+<p><strong>Coordinated Interactions:</strong> - A <strong>behavior
+dropdown</strong> filters all three visualizations simultaneously
+(<strong>IMI</strong>).<br />
+- A <strong>spatial brush</strong> on the scatter links to Viz 3
+(<strong>DMI</strong>).<br />
+- A <strong>bar-chart click</strong> on Bregma bins highlights
+corresponding neurons in Viz 1 (<strong>DMI</strong>).</p>
+<p>Together, the three views form a powerful exploratory tool directly
+supporting the spatial segregation question.</p>
+<hr />
+<h2
+id="describe-the-visualization-and-characteristics-of-channels-1"><strong>Describe
+the Visualization and Characteristics of Channels</strong></h2>
+<h3 id="marks-1"><strong>Marks</strong></h3>
+<ul>
+<li>Circles — <em>activated neurons in anatomical space</em><br />
+</li>
+<li>Bars — <em>Bregma-bin summaries and brushed-region
+summaries</em></li>
+</ul>
+<h3 id="channels-1"><strong>Channels</strong></h3>
+<h4 id="position-x-and-y"><strong>Position (X and Y)</strong></h4>
+<ul>
+<li>Encodes anatomical coordinates <em>(Centroid_X,
+Centroid_Y)</em>.<br />
+</li>
+<li>This is the strongest perceptual channel and essential for spatial
+tasks.</li>
+</ul>
+<h4 id="color-categorical"><strong>Color (categorical)</strong></h4>
+<ul>
+<li>Encodes sex <em>(Male/Female)</em>.</li>
+</ul>
+<h4 id="color-quantitative-diverging"><strong>Color (quantitative,
+diverging)</strong></h4>
+<ul>
+<li>Encodes <strong>female proportion</strong> across Bregma bins.<br />
+</li>
+<li>Immediately distinguishes female-biased vs male-biased slices.</li>
+</ul>
+<h4 id="shape"><strong>Shape</strong></h4>
+<ul>
+<li>Reinforces sex encoding, improving accessibility (e.g., colorblind
+users).</li>
+</ul>
+<h4 id="length-bar-height"><strong>Length (bar height)</strong></h4>
+<ul>
+<li>Shows either <em>(1) female proportion</em> or <em>(2) raw
+counts</em> in brushed regions.</li>
+</ul>
+<h4 id="opacity"><strong>Opacity</strong></h4>
+<ul>
+<li>Dimmed for non-selected regions to highlight interactive focus.</li>
+</ul>
+<h3 id="why-these-choices-1"><strong>Why these choices?</strong></h3>
+<ul>
+<li><strong>Spatial tasks → position</strong><br />
+</li>
+<li><strong>Sex differences → color + shape</strong><br />
+</li>
+<li><strong>Bias interpretation → diverging colormap</strong><br />
+</li>
+<li><strong>Summaries → bar height for clarity</strong></li>
+</ul>
+<p>These decisions directly follow principles from class and support the
+analytical goals.</p>
+<hr />
+<h2
+id="describe-the-interaction-and-characteristics-of-interactivity"><strong>Describe
+the Interaction and Characteristics of Interactivity</strong></h2>
+<h3 id="imi-1-behavior-dropdown"><strong>IMI #1 — Behavior
+Dropdown</strong></h3>
+<p>Users select one of the six behavioral conditions.<br />
+All visualizations update in sync.</p>
+<p><strong>Tasks supported:</strong> Filter, Compare<br />
+<strong>Why:</strong> Different behaviors activate different neural
+circuits; segregation may be behavior-specific.</p>
+<hr />
+<h3
+id="dmi-1-spatial-brush-on-scatterplot-bi-directional-link"><strong>DMI
+#1 — Spatial Brush on Scatterplot (Bi-directional Link)</strong></h3>
+<p>A rectangular brush selects any XY region of the brain.<br />
+The “Sex counts in brushed region” panel updates automatically.</p>
+<p><strong>Tasks supported:</strong> Locate, Cluster, Summarize<br />
+<strong>Why:</strong> Allows the user to test hypotheses about
+microanatomical pockets enriched for one sex.</p>
+<p>This is a meaningful analytic interaction because it converts
+<em>local anatomical selection</em> into <em>quantitative
+evidence</em>.</p>
+<hr />
+<h3 id="dmi-2-click-selection-on-bregma-bins"><strong>DMI #2 — Click
+Selection on Bregma Bins</strong></h3>
+<p>Clicking a bar highlights only the neurons from that bin in the
+scatterplot.</p>
+<p><strong>Tasks supported:</strong> Locate, Compare<br />
+<strong>Why:</strong> Connects coarse anatomical slices to precise XY
+spatial locations, revealing whether certain slices house the strongest
+sex biases.</p>
+<hr />
+<h3 id="additional-hover-interaction"><strong>Additional Hover
+Interaction</strong></h3>
+<p>Tooltips show each neuron’s: - XY coordinates<br />
+- Sex<br />
+- Bregma value<br />
+- Fos expression</p>
+<p><strong>Tasks supported:</strong> Details-on-demand<br />
+<strong>Why:</strong> Allows deeper inspection without cluttering the
+visualization.</p>
+<hr />
+<h2 id="critique-of-the-view-1"><strong>Critique of the
+View</strong></h2>
+<h3 id="what-works-well-1"><strong>What Works Well</strong></h3>
+<ul>
+<li>The scatterplot effectively reveals spatial segregation or overlap
+between male and female activation.<br />
+</li>
+<li>The Bregma-bin chart gives an intuitive anatomical summary of sex
+bias.<br />
+</li>
+<li>Bi-directional interactions promote meaningful exploration rather
+than passive viewing.<br />
+</li>
+<li>Behavior filtering isolates condition-specific activation
+patterns.<br />
+</li>
+<li>Encoding choices remain consistent with Views I and II, supporting
+dashboard coherence.</li>
+</ul>
+<hr />
+<h3 id="areas-for-improvement"><strong>Areas for
+Improvement</strong></h3>
+<ul>
+<li>Dense XY regions may obscure subtle sex differences; optional
+<em>jitter</em> or <em>density contours</em> could help.<br />
+</li>
+<li>Bregma bins are anatomical approximations; more precise nuclei-level
+metadata would enable finer summaries.<br />
+</li>
+<li>Small brush selections may be difficult for some users; zoom
+functionality could enhance control.</li>
+</ul>
+<hr />
+<h2 id="suitability-for-the-task"><strong>Suitability for the
+Task</strong></h2>
+<p>This view directly addresses spatial segregation by integrating: -
+<strong>3 coordinated visualizations</strong>,<br />
+- <strong>2 IMI interactions</strong>,<br />
+- <strong>2 DMI interactions</strong>, and<br />
+- clear encodings of both <strong>sex</strong> and <strong>anatomical
+position</strong>.</p>
+<p>It fully supports all low-level tasks and provides a clear pathway to
+answering the high-level analytic question of whether sex-biased
+behaviorally activated neurons segregate anatomically within the
+preoptic region.</p>
+<hr />
+<h2 id="team-member-iv-vincy">Team Member IV: Vincy</h2>
+<h3 id="some-advanced-data-wrangling">Some advanced data wrangling</h3>
+<p>Wrangling beyond the basics was necessary for my planned views, I
+applied some purposeful preprocessing steps as follows to make the
+dashboard rendering more computationally manageable and easier for
+interpretation:</p>
+<ol type="1">
+<li><p><strong>Further downsampling</strong></p>
+<p>Randomly selected ~10,000 cells while preserving original proportions
+of Cell_class, Animal_sex, Behavior, and Bregma level (originally 1
+milion, previously trimmed to ~80,000 for basic EDA).</p>
+<p>This reduced memory use significantly and enabled real-time
+bidirectional brushing/linking without sacrificing statistical
+representation.</p></li>
+<li><p><strong>Behaviour label refinement</strong></p>
+<p>I found the original behavior annotations sometimes too ambiguous.
+Using prior exploratory analysis, I renamed:</p>
+<ul>
+<li>“Aggression to pup” →”Pup-directed male aggression”.</li>
+</ul>
+<blockquote>
+<p>Only male mice showed infanticide (killing of newborn mice) in this
+dataset.</p>
+</blockquote>
+<ul>
+<li>“Naive” →”Naive home-cage (control)”</li>
+</ul>
+<blockquote>
+<p>To better emphasize the undisturbed baseline condition.</p>
+</blockquote>
+<ul>
+<li>“Aggression to adult”: “Male–male aggression”</li>
+</ul>
+<blockquote>
+<p>To clarify ‘aggression mice’ in the dataset waere only measured in
+males.</p>
+</blockquote></li>
+<li><p><strong>Discretization of the anterior–posterior
+axis</strong></p>
+<p>The continuous Bregma brain coordinate (in mm) was binned into three
+biologically meaningful ordinal levels:</p>
+<ul>
+<li><p>Posterior (Bregma ≤ –0.1)</p></li>
+<li><p>Middle (–0.1 &lt; Bregma ≤ 0.15)</p></li>
+<li><p>Anterior (Bregma &gt; 0.15)</p></li>
+</ul>
+<p>This transformation turns a 1D coordinate into an intuitive 3-level
+spatial gradient, enabling 3D-<strong><em>like</em></strong> exploration
+(anterior vs. middle vs. posterior POA) using only 2D faceting and
+small-multiples — a critical step for the second dashboard.</p></li>
+<li><p>Long-format reshaping (“melting”) of the gene matrix The original
+data has one column per gene, which hinders faceted or grouped
+calculations. I decided to melt only the key social gene we’re
+interested in into a single long-format table. I reasoned that this tidy
+structure would be essential for:</p>
+<ul>
+<li>Rapid aggregation, like aggregating proportion of cells expressing a
+gene &gt; 0.</li>
+<li>Pairwise coexpression matrices and interactive scatter plots of any
+gene pair.</li>
+<li>Allow for dynamic box/violin plots of selected gene sets when users
+brush spatial regions</li>
+</ul></li>
+</ol>
+<p>All of these additional advanced wrangling steps were aimed to
+facilitate better visualization interactivity (zoom, pan, brush, linked
+views) and aggregated statistical calculations.</p>
+<h3
+id="theme-exploring-anatomical-location-of-cells-and-their-gene-expressions"><strong>Theme:
+</u>Exploring anatomical location of cells and their gene
+expressions</u></strong></h3>
+<p>The main objective of my inquiry / theme is to link gene expression
+in individual cells to their precise anatomical brain location and
+gene-behavioral relevance in the hypothalamic preoptic region.</p>
+<h3
+id="view-i-spatial-distribution-of-social-gene-expression-on-single-brain-slice">View
+I: Spatial distribution of social gene expression on single brain
+slice</h3>
+<p><strong>Title:</strong> <strong>Spatial Anatomy of Social Gene
+Exoression in the Preoptic Hypothalamus of Mice</strong></p>
+<p><strong>Analytic Questions and Tasks:</strong> Where are the cells
+expressing the socially-relevant genes located within the finer-grained
+anatomy of the preoptic area?</p>
+<ul>
+<li><p>socially-relevant genes (oxytocin Oxtr, estrogen Esr1,
+testosterone Ar, serotonin Htr2c)</p>
+<ul>
+<li><p>Excitatory signalling marker: Slc17a6</p></li>
+<li><p>Inhibitory signalling marker: Gad1</p></li>
+</ul></li>
+</ul>
+<p><img src="../images/view-01-vincy.png" /></p>
+<p><strong>Low-Level Tasks Supports</strong> | Visualization /
+Interaction | Achieved Low-Level Tasks |
+|———————————————————–|—————————————————————————————————————————————————————————————|
+| <strong>Overlaid Spatial Scatter Plot</strong><br>(Cells on Atlas at
+Bregma 0.14 mm) | • Users can <u>identify</u> individual cells by their
+distinct positions and encodings (e.g., color for gene expression).<br>•
+<u>Locate</u> enables pinpointing cells relative to atlas landmarks
+(e.g., sub-regions in the preoptic area).<br>• <u>Cluster</u> reveals
+perceptual groupings of cells in anatomical regions, helping spot
+density patterns. | | <strong>Bidirectional Brushing</strong><br>between
+Overlaid and Non-Overlaid Scatter Plots | • Brushing allows
+<u>identifying</u> and <u>locating</u> selected cells at higher
+resolution in the zoomable plot (overcoming Altair’s overlay
+limitation).<br>• Supports <u>comparing</u> cell positions/distributions
+between views and <u>associating</u> selections with linked plots (e.g.,
+updating bar/boxplots), revealing correlations like gene expression
+variability in brushed regions. | | <strong>Bar Plot</strong><br>(Mean
+Gene Expression) | • Bars enable <u>comparing/ranking</u> mean
+expression levels across genes, with brushing dynamically updating
+values for selected cells. | | <strong>Boxplot</strong><br>(Gene
+Expression Distribution) | • Users compare/rank medians, variability
+(IQR), and outliers across genes.<br>• Brushing distinguishes
+distributions for filtered cells and categorizes them by expression
+levels (e.g., high vs. low variability). | | <strong>Dropdown
+Filters</strong><br>(Social Behaviors &amp; Specific Genes) | •
+Filtering <u>categorizes</u> cells by behaviors or genes,
+<u>distinguishing</u> subsets (e.g., aggressive vs. nurturing
+behaviors). | | <strong>Cell Opacity Slider</strong> | •
+<u>Distinguish</u> separates cells from the background atlas via opacity
+adjustment. |</p>
+<p><strong>Encoding, Mark &amp; Channel Description: View I</strong></p>
+<ul>
+<li><p><strong>Encoding</strong>:</p>
+<ul>
+<li><p>Scatter plots: The X_coordinate and Y_coordinate attributes
+correspond the anatomical spatial coordinate for each cell. These two
+channels were encoded as x and y respectively for the scatter
+plot.</p></li>
+<li><p>Bar plot: The x dimension encodes the mean aggregation of
+expression level, while the y dimension encodes the key social
+genes.</p></li>
+<li><p>Scatter plot: The x dimension encodes gene expression level,
+while the y dimension encodes the key social genes.</p></li>
+</ul></li>
+</ul>
+<!-- -->
+<ul>
+<li><p><strong>Marks</strong>: Point (scatter plot), line (bar plot
+&amp; box plot), area (box plot)</p>
+<ul>
+<li><p>Point was chosen because it marks individual cells as points for
+showing density and possible clustering spatial pattern.</p></li>
+<li><p>Line was chosen because the human perception can more reliably
+perceive difference in line. Mean expression of each gene could be
+reliably reflected on the aggregated bar chart, and on the box plot, the
+length of the whisker lines allows user to quickly compare the
+variability between different genes.</p></li>
+<li><p>Area in box plot tells us about the precision and variability in
+one gene around its median over another gene. A smaller box area allows
+the user to know quickly that this particular gene has uniform
+expression level close to its medium. Overall, boxplot is a multivariate
+visual idiom that shows median/IQR/outliers for
+<strong><em>variability</em></strong>.</p></li>
+</ul></li>
+<li><p><strong>Channels</strong>: Colour, opacity, position, length</p>
+<ul>
+<li><p>Colous was chosen because it allows quick pre-attentive
+comparison of the different genes on the bar plot and box plot. The
+colours were made consistent across the two plot for the same
+genes.</p></li>
+<li><p>Opacity was chosen to resolve <strong>overplotting
+problem</strong> of the dense cells within the small pre-optic
+area.</p></li>
+<li><p>Position: Both positions along the x and y axes were used to
+express the spatial location of the cells. The vertical position is used
+for the bar and box plot to list genes of interest.</p></li>
+<li><p>Length was chosen to represent higher and lower expression level
+in box and bar plot.</p></li>
+</ul></li>
+</ul>
+<p><strong>Interactions Description: View I</strong></p>
+<ul>
+<li><p>Bidirectional brushing: Chosen <strong>for</strong> seamless
+linking between overlay (brain map) and zoomable scatter plot views.
+This bidirectional interaction supports:</p>
+<ul>
+<li><p><strong>locate</strong> (pinpoint cells in different POA
+subregions)</p></li>
+<li><p><strong>cluster</strong> (group dense cell patterns via
+brush)</p></li>
+<li><p><strong>distinguish</strong> (highlight brushed vs. non-brushed
+points by color/opacity)</p></li>
+<li><p><strong>compare</strong> (contrast expression stats
+pre/post-brush).</p></li>
+<li><p>An interested user can brush on different sub-region within the
+POA to <strong>compare</strong> expressions of Estrogen vs. Testosteron
+between different social behaviours.</p></li>
+</ul></li>
+<li><p><strong>Dropdowns (filter by behaviour or gene)</strong>:
+Selected <strong>for</strong> categorical cell filtering of different
+social behaviours and genes. These two dropdowns help with:</p>
+<ul>
+<li><p><strong>categorize</strong> (group cells by parenting
+vs. aggression)</p></li>
+<li><p><strong>identify</strong> (label specific gene
+expressions)</p></li>
+<li><p><strong>distinguish/compare</strong> (isolate virgin-female
+vs. male patterns by selecting different dropdown options).</p></li>
+</ul></li>
+<li><p><strong>Opacity Slider</strong>: Chosen for to balance cell
+density with atlas visibility and reduce overplotting issue of dense
+cells. Enables support for:</p>
+<ul>
+<li><p><strong>locate/identify</strong> (by lowering the opacity, the
+brain atlas underneat reveal subregion labels like MPOC (medial preoptic
+nucleus), MPOM (medial part of medial preoptic), and MPA (medial
+preoptic) for precise anatomical mapping within the boarder preoptic
+area.</p></li>
+<li><p><strong>distinguish</strong> (fade cells to show atlas boundaries
+underneath)</p></li>
+</ul></li>
+</ul>
+<p><strong>Critique:</strong></p>
+<p>The bidirectional brushing on spatial scatters allows direct
+selection of anatomical cell cluster, which I believe is effective
+because it dynamically updating bar/box plots for means and variability.
+Dropdowns filter behaviors/genes, enabling comparisons like Esr1
+variability in parenting vs. aggression.</p>
+<ul>
+<li><p><strong>What Works Well</strong>: Brushing links anatomy to stats
+like mean expression level and variability seamlessly, supporting
+exploratory analysis even for non-experts. Opacity slider aids subregion
+identification by showing the atlas labelling underneath.</p>
+<ul>
+<li><p>Overplotting was addressed via further downsampling, opacity
+(alpha) with the opacity slider.</p></li>
+<li><p>Effective labels &amp; legends: All axes and titles are renamed
+to nicely formatted names, not just the default attribute names.
+Different genes were coloured separately.</p></li>
+<li><p>Visualization Choice: Apt for spatial question—scatters map
+anatomy directly; bars/boxplots suit summaries/distributions.</p></li>
+<li><p>Data:Ink Ratio: Used minimal elements (no 3D/backgrounds). I
+tried improving this aspect by removing redundant color legend for the
+two scatterplot, which share the same color scheme.</p></li>
+</ul></li>
+<li><p><strong>What Could Be Better</strong>: Random subsampling from 1
+million cells to 10,000 cells was necessary to keep the dashboard
+responsive, but it would have been more robust if we could include all
+the cell data. Another huge room for improvement is Altair’s disabled
+zoom on overlays meant that I could not make the brain atlas and scatter
+overlay zoom-in together. I think this significantly restricts deep
+dives into examining the anatomical location of the cells.</p>
+<ul>
+<li>Overplotting in the unzoomable scatter-atlas overlay could not be
+entirely resolved because all the points were densely packed in a small
+region of the brain. Resolving this issue would require tools beyond
+Altair unfortuntely.</li>
+</ul></li>
+</ul>
+<hr />
+<h3
+id="view-ii-expression-and-co-expression-patterns-from-anterior-to-posterior-part-of-brain">View
+II: Expression and co-expression patterns from anterior to posterior
+part of brain</h3>
+<p><strong>Title:</strong> <strong>Gene Expression Patterns and
+Coexpression in Preoptic Area Anterior-Posterior Gradients</strong></p>
+<p><strong>Analytic Questions and Tasks:</strong> What are the
+expression densities of key social genes across
+anterior-middle-posterior POA gradients, and how do pairwise
+coexpression (correlation) strengths vary by behavior?</p>
+<blockquote>
+<p>For example, testosterone-estrogen (Ar-Esr1) correlation.</p>
+</blockquote>
+<p><img src="../images/view-02-vincy.png" /></p>
+<p><strong>Low-Level Tasks Supports</strong></p>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr>
+<th>Visualization / Interaction</th>
+<th>Achieved Low-Level Tasks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Main Heatmap</strong><br>(Anterior → Posterior POA bins ×
+key genes)</td>
+<td>• Users can rapidly <u>compare and rank</u> gene expression across
+anterior–posterior brain positions via the purple → beige gradient.<br>•
+<u>Identification</u> and <u>distinction</u> of high-expression regions
+are supported by strong pre-attentive color mapping.<br>•
+<strong>Brushing</strong> supports <u>clustering</u> of contiguous
+high-expression zones.</td>
+</tr>
+<tr>
+<td><strong>Brushing</strong> on the Bregma × Gene Heatmap</td>
+<td>• Brushing lets the user <u>identify and locate</u> specific bregma
+bin &amp; gene combinations, then immediately <u>associate</u> those
+selections with the expression density plot below.</td>
+</tr>
+<tr>
+<td><strong>Expression Layered Density Plot</strong><br>(updated by
+brushing)</td>
+<td>• Multiple overlapping density curves (one per selected gene) allow
+direct <u>comparison</u> of distribution shape, median, and spread.<br>•
+Color encoding by gene supports fast <u>distinction</u>.<br>• Tightly
+linked to brushed region, revealing how <strong>expression
+variability</strong> changes along the anterior–posterior axis or in
+specific sub-regions.</td>
+</tr>
+<tr>
+<td><strong>Staircase Gene–Gene Co-expression
+Matrix</strong><br>(Pearson r with annotations)</td>
+<td>• The blue–white–red divergent colormap and numerical annotations
+enable precise <u>comparison and ranking</u> of co-expression strength
+between any gene pair.<br>• Users can <u>identify</u> the strongest
+positive/negative pairs at a glance and <u>distinguish</u> meaningful
+correlations from noise.<br>• Directly supports
+<u>correlation/association</u> tasks at the gene level.</td>
+</tr>
+<tr>
+<td><strong>Click Interaction</strong> on a co-expression matrix cell →
+Top-10 Animals Bar Chart</td>
+<td>• Clicking a correlation cell <u>identifies</u> a specific gene pair
+and instantly <u>associates</u> it with the animals that most strongly
+exhibit that co-expression pattern.<br>• The ranked bar chart allows
+users to <u>compare and order</u> animals by co-expression strength and,
+via tooltips, <u>identify</u> metadata (animal ID, sex).</td>
+</tr>
+<tr>
+<td><strong>Global Social-Behavior Dropdown</strong><br>(affects all
+charts in View 2)</td>
+<td>• Instantly <u>categorizes</u> the entire dataset by behavior (e.g.,
+parental vs. aggressive), allowing users to <u>distinguish</u> and
+<u>compare</u> expression patterns, density distributions, and
+co-expression strengths between behavioral conditions.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mark &amp; Channel Description: View II</strong></p>
+<ul>
+<li><p><strong>Marks</strong>: Area (heatmaps, density plot), line (bar
+plot)</p>
+<ul>
+<li><p>Area was chosen because it marks individual cells as points for
+showing density and possible clustering spatial pattern.</p></li>
+<li><p>Line was chosen because the human perception can more reliably
+perceive difference in line. Mean expression of each gene could be
+reliably reflected on the aggregated bar chart, and on the box plot, the
+length of the whisker lines allows user to quickly compare the
+variability between different genes.</p></li>
+<li><p>Area in box plot tells us about the precision and variability in
+one gene around its median over another gene. A smaller box area allows
+the user to know quickly that this particular gene has uniform
+expression level close to its medium. Overall, boxplot is a multivariate
+visual idiom that shows median/IQR/outliers for
+<strong><em>variability</em></strong>.</p></li>
+</ul></li>
+<li><p><strong>Channels</strong>: Colour, length, position</p>
+<ul>
+<li><p>Colour - color <strong>gradient</strong> was chosen to color for
+the Bregma-Gene heatmap and the Top-10 animals bar chart. The same color
+gradient scale was used for both of these plots to maintain consistency
+and reinforces the user’s association between “light color = high
+expression” and “darker color = lower expression” in this View, matching
+“more ink = more value”.</p>
+<blockquote>
+<p>Gradient is chosen for gene expression level (and its aggregates)
+because they contain natural order.</p>
+</blockquote></li>
+<li><p>Color - color <strong>hue</strong> was used for the layered
+density plot to color different genes. Hue was chosen because there is
+no natural sequential ordering between different genes
+(nominal).</p></li>
+<li><p>Length was chosen for representing high (longer length) and low
+(shorter length) co-expression level between different Top 10 mice. This
+is to complement color gradient, since our human perception is more
+sensitive to difference in length than to color gradient.</p></li>
+<li><p>Position (horizontal) was chosen for representing different genes
+along the x axis in the heatmaps.</p></li>
+</ul></li>
+<li><p><strong>Encoding</strong>:</p>
+<ul>
+<li><p>Bregma heatmap: The x dimension encodes different genes, while
+the y dimension encodes the 3 levels of spatial location (anterior,
+middle, and posterior brain).</p></li>
+<li><p>Coexpression heatmap/correlation matrix: Both x and y dimensions
+encode the same set of key social genes, since the objective of this
+plot is to look at the correlation between each gene pair.</p></li>
+<li><p>Layered density plot: The x dimension encodes gene expression
+level, while the y dimension encodes the density (frequency) of
+expression level.</p></li>
+<li><p>Top coexpression animals bar plot: The x dimension encodes for
+different experimental mice in this data, while the y dimension encodes
+the mean co-expression of a given gene-pair.</p></li>
+</ul></li>
+</ul>
+<p><strong>Interactions: View II:</strong></p>
+<ul>
+<li><p><strong>Brushing (on Bregma-gene heatmap)</strong>: Chosen to
+dynamically subset gradients, turning 3D (A-M-P bins) into interactive
+2D (reduce ink ratio too!). Supports:</p>
+<ul>
+<li><p><strong>cluster</strong> (group high-density bins)</p></li>
+<li><p><strong>distinguish</strong> (separate anterior vs. posterior
+patterns)</p></li>
+<li><p><strong>locate</strong> (position along Bregma)</p></li>
+<li><p><strong><em>characterize distribution/compare</em>,</strong></p>
+<ul>
+<li>For example: Brushing to select different anterior and/or posterior
+part of the brain updates density plot and contrast different social
+genes.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Clicking (selection_point on coexpression
+heatmap)</strong>: Chosen for on-demand selection into gene pairs (e.g.,
+Ar-Esr1 show moderate correlation). Clicking aids:</p>
+<ul>
+<li><p><strong>identify</strong> (label pair strengths via Pearson
+correlation coefficient)</p></li>
+<li><p><strong>compare</strong> (contrast coexpression across
+genes/behaviors)</p></li>
+</ul></li>
+<li><p><strong>Behavior Dropdown (links all views)</strong>: Mirrors
+Dashboard 1 for consistency, and it enables:</p>
+<ul>
+<li><p><strong>categorize</strong> (by behaviours, like mating
+vs. parenting mice)</p></li>
+<li><p><strong>compare</strong> (shows behavioral coexpression
+differences).</p></li>
+</ul></li>
+</ul>
+<p><strong>Critique:</strong></p>
+<p>This view is well-suited for answering: <em>What are the expression
+densities of key social genes across anterior-middle-posterior POA
+gradients, and how do pairwise coexpression strengths vary.</em> The
+heatmaps provide gradient overviews of expression levels and
+co-expression strength, incorporating brushing/clicking to link the
+heatmaps to expression distribution (density plot) and animal-specific
+gene coexpressions. Behavior dropdown ties gene expression patterns to
+social function.</p>
+<p>And based on the course principle, there are aspects of View 2 which
+is done great and/or need improvements:</p>
+<ul>
+<li><p><strong>Proportional Ink</strong>: High-heatmap rects/annotations
+scale with r/density proportionally; bars reflect true coexpression
+means. However, it is mildly violated because the x-axis in density
+plots was truncated due to extreme outlier that flows outside the plot
+space.</p></li>
+<li><p><strong>Data:Ink Ratio</strong>: Mediocre-color scheme for color
+gradient was kept consistent. However, I decided to add the correlation
+coefficients on top of each gene pairs in the coexpression matrix, and I
+also added an annotation on the side telling the user to click on the
+matrix. This can be improved by removing the correlation coefficient
+annotation and rely on just the tooltip popup (which is already
+there).</p></li>
+<li><p><strong>Labels &amp; Legends</strong>: Clear-axes label are all
+renamed to avoid defaulting to the attribute names.</p></li>
+<li><p><strong>Overplotting</strong>: The bar plot’s width was adjusted
+so as to not overlap each other. However, the density plots can have
+further improvement by reducing the overlaps if it is plotted as a ridge
+plot instead. It can also be bettered with alpha in density or
+vertically faceted, but faceting will demand more vertical
+scrolling.</p></li>
+<li><p><strong>Visualization Choice</strong>: Fits gene
+expression/coexpression query—heatmaps for expression gradient overview,
+bars for honing in onto separate mouse.</p></li>
+<li><p><strong>Colour &amp; Accessibility</strong>: Color hues were
+applied to nominal attributes without intrinsic ordering (different
+genes), while color gradients were applied attributes like expression or
+its aggregate since they have sequential orders. However, there seems to
+be too many colors involved in this view, which might be improved by
+faceting the layered density plot by genes and remove the color channel
+for the density plot.</p></li>
+</ul>
+<hr />
+<h3 id="individual-summary-2">Individual Summary</h3>
+<p>My analysis explores the anatomical locations of cells in the
+hypothalamic preoptic area (POA) and their gene expressions to get at
+the overall theme of molecular-spatial-functional organization.
+Dashboard 1 addresses where cells expressing socially-relevant genes
+(e.g., Ar, Esr1, Oxtr) are located within finer-grained POA subregions
+like MPOC, MPOM, and MPA, via spatial overlays and linked stats on
+means/variability. Dashboard 2 examines expression densities across
+anterior-middle-posterior gradients and pairwise coexpression strengths
+(e.g., Ar-Esr1 correlations) varying by behavior, revealing
+neuromodulatory patterns in social contexts like parenting or
+aggression.</p>
+<p>Successes included robust interactions: bidirectional brushing
+between spatial scatters enabled seamless subregion selection and gene
+stats updates, a debugging win that enhanced EDA flow. Dropdowns for
+behaviors/genes and the opacity slider supported flexible, user-driven
+comparisons, making the dashboards accessible for non-experts while
+preserving data fidelity on ~10k subsampled cells.</p>
+<p>Challenges arose from Altair limitations, like no zooming on
+mark_image() overlays, hindering dense cluster inspection despite a
+separate zoomable scatter. In View 2, color gradients felt overwhelming
+across heatmaps and densities; faceting or ridge plots could clarify
+layered distributions but risked vertical space overload, potentially
+cluttering the view for group use.</p>
+<hr />
+<h2 id="group-summary">Group Summary</h2>
+<p>Our group investigated brain cell variety, how males and females
+differ in brain activity, and where cells are situated in the
+hypothalamic preoptic zone using MERFISH data. We built a flexible
+dashboard with linked views, allowing users to explore from broad layout
+cues down to single-cell gene expression.</p>
+<p>What ties every theme into one system? This dashboard builds on three
+linked ideas: spatial and molecular identity, patterns tied to sex-based
+activity, and a breakdown of variations in the data.</p>
+<h3 id="spatial-and-molecular-identity">Spatial and Molecular
+Identity</h3>
+<p>This part shows how cells are arranged in the preoptic area. One view
+maps out where different brain cells sit across tissue sections, while
+another verifies those types by identifying genes such as <em>Gad1</em>.
+Together, they provide a structural and genetic backdrop for the rest of
+the study.</p>
+<h3 id="sex-specific-activation">Sex-Specific Activation</h3>
+<p>Expanding from the layout map, this section zeroes in on functional
+activity. Instead of just location, one view displays overall trends,
+showing where male or female bias pops up during specific actions.
+Meanwhile, another view pinpoints those active pathways directly onto
+brain space, allowing users to spot exactly which parts of the
+foundational structure light up differently by sex.</p>
+<h3 id="variance-robustness">Variance &amp; Robustness</h3>
+<p>This component delves into statistical validation to support the
+findings. One view distinguishes whether observed differences come from
+sex or from random technical noise like Animal ID. Another view tests if
+correcting for those batch issues was effective. On top of that, a
+granular view checks single cells to confirm that patterns make
+biological sense. So when sex-based gaps are observed in the activation
+patterns, we know they’re real, not flukes tied to one animal or
+another.</p>
+<h3 id="overall-takeaways">Overall Takeaways</h3>
+<p>These visuals team up to expose a layered yet dynamic system. Our
+findings prove that even though each animal’s unique biology shapes
+overall gene activity, clear sex-based trends still emerge - especially
+in hormone-related genes or during specific behaviors like parenting.
+Location matters: brain circuits favoring one sex aren’t scattered
+randomly - they are situated within specific zones. Mixing precise maps,
+real-time brain responses, and solid numerical checks helps scientists
+unpack how social actions form, shifting from broad clues to trustworthy
+biological truths. Colors stay uniform, panels connect, and filters sync
+- all parts talk to each other so users can dive deep without getting
+lost.</p>
+</body>
+</html>
