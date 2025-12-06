@@ -34,7 +34,7 @@ For the most abundant neuronal clusters, what percentage of the total gene expre
 - **Filter:** Focus the analysis on specific, high-abundance neuronal clusters.
 - **Find Extremum:** Identify genes exhibiting the strongest sex-driven or ID-driven variance.
 
-![](../images/DSCI320PM3View1.png)
+![](images/DSCI320PM3View1.png)
 
 **Suitability of Visualization:**
 The multi-view approach is highly effective. The scatter plot allows for the simultaneous comparison of two quantitative variables ($\eta^2_{Sex}$ vs. $\eta^2_{ID}$), making it easy to find extremes (genes far from the diagonal). The stacked bar chart complements this by showing the part-to-whole relationship of the variance components for the filtered cluster.
@@ -63,7 +63,7 @@ Are there genes with large apparent sex differences that are significantly reduc
 - **Compare:** Directly contrast the Original Log-Fold Change (LFC) with the Corrected LFC for each gene.
 - **Compute/Assess:** Evaluate the magnitude of the "correction shift" (the residual difference).
 
-![](../images/DSCI320PM3View2.png)
+![](images/DSCI320PM3View2.png)
 
 **Suitability of Visualization:**
 The lollipop plot is an ideal choice for this comparison task. The explicit line connecting the "Original" and "Corrected" points for each gene provides a stronger perceptual cue for evaluating change than side-by-side bars would.
@@ -91,7 +91,7 @@ Is the observed sex difference for a given gene consistent across all animals, o
 - **Characterize Distribution:** Assess the spread and central tendency of gene expression across individual cells and animals.
 - **Find Anomalies (Outliers):** Identify individual animals or cells that deviate significantly from the group pattern.
 
-![](../images/DSCI320PM3View3.png)
+![](images/DSCI320PM3View3.png)
 
 **Suitability of Visualization:**
 A jittered strip plot is superior to a box plot for this task because it displays the raw data points. This reveals the true sample size, underlying distribution, and presence of distinct subpopulations, which summary statistics (like quartiles in a box plot) can hide.
@@ -143,7 +143,7 @@ The primary focus is to understand how different neural cell classes are distrib
 - **Distinguish:** Differentiate cell classes based on spatial organization.  
 - **Summarize:** Aggregate cell counts by class and slice to reveal compositional trends.
 
-  ![](../images/visualization1.png)
+  ![](images/visualization1.png)
 
 ### Suitability of Visualization
 
@@ -201,7 +201,7 @@ This view supports multi-scale analysis from individual cells to tissue-wide com
 - **Retrieve Value:** Access individual cell expression values.  
 - **Find Extremum:** Identify extreme expressers.
 
-    ![](../images/visualization2.png)
+    ![](images/visualization2.png)
 
 ### Suitability of Visualization
 
@@ -279,7 +279,7 @@ Together, these improvements would better balance expressiveness with efficiency
 ---
 
 ## **View (Visualization)**
-![View 1](../images/emily-view1.png)
+![View 1](images/emily-view1.png)
 
 This view consists of an **interactive heatmap** paired with a **linked bar chart**.  
 The heatmap displays activation of neuronal clusters across behavioral conditions, with rows representing *Neuron_cluster_ID* and columns representing *Behavior*. Each cell encodes the **sex-bias of activated cells** using a diverging color scale.
@@ -427,7 +427,7 @@ All tasks relate directly to investigating spatial segregation of functional cir
 ---
 
 ## **View (Description)**
-![View 2](../images/emily-view2.png)
+![View 2](images/emily-view2.png)
 
 This view is composed of **three coordinated visualizations**, arranged to allow users to explore anatomical segregation from whole-region patterns down to specific local subregions:
 
@@ -625,7 +625,7 @@ The main objective of my inquiry / theme is to link gene expression in individua
 
     -   Inhibitory signalling marker: Gad1
 
-![](../images/view-01-vincy.png)
+![](images/view-01-vincy.png)
 
 **Low-Level Tasks Supports**
 | Visualization / Interaction                              | Achieved Low-Level Tasks                                                                                                                                                              |
@@ -723,7 +723,7 @@ The bidirectional brushing on spatial scatters allows direct selection of anatom
 
 > For example, testosterone-estrogen (Ar-Esr1) correlation.
 
-![](../images/view-02-vincy.png)
+![](images/view-02-vincy.png)
 
 
 **Low-Level Tasks Supports**
