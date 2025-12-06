@@ -19,6 +19,16 @@
   </p>
 </header>
 
+<!-- MathJax – MUST be AFTER the CSS and BEFORE any custom <style> -->
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" 
+          id="MathJax-script" async></script>
+
 <div style="position: relative; margin-top: -40px;">
   <div style="position: absolute; left: 50%; transform: translateX(-50%); z-index: 10;">
     <a href="final-report.html" 
