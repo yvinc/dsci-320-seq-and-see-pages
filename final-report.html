@@ -973,35 +973,52 @@
   </ul></li>
   </ul>
   <p><img src="images/view-01-vincy.png" /></p>
-  <p><strong>Low-Level Tasks Supports</strong> | Visualization /
-  Interaction | Achieved Low-Level Tasks |
-  |———————————————————–|—————————————————————————————————————————————————————————————|
-  | <strong>Overlaid Spatial Scatter Plot</strong><br>(Cells on Atlas at
-  Bregma 0.14 mm) | • Users can <u>identify</u> individual cells by their
-  distinct positions and encodings (e.g., color for gene expression).<br>•
-  <u>Locate</u> enables pinpointing cells relative to atlas landmarks
-  (e.g., sub-regions in the preoptic area).<br>• <u>Cluster</u> reveals
-  perceptual groupings of cells in anatomical regions, helping spot
-  density patterns. | | <strong>Bidirectional Brushing</strong><br>between
-  Overlaid and Non-Overlaid Scatter Plots | • Brushing allows
-  <u>identifying</u> and <u>locating</u> selected cells at higher
-  resolution in the zoomable plot (overcoming Altair’s overlay
-  limitation).<br>• Supports <u>comparing</u> cell positions/distributions
-  between views and <u>associating</u> selections with linked plots (e.g.,
-  updating bar/boxplots), revealing correlations like gene expression
-  variability in brushed regions. | | <strong>Bar Plot</strong><br>(Mean
-  Gene Expression) | • Bars enable <u>comparing/ranking</u> mean
-  expression levels across genes, with brushing dynamically updating
-  values for selected cells. | | <strong>Boxplot</strong><br>(Gene
-  Expression Distribution) | • Users compare/rank medians, variability
-  (IQR), and outliers across genes.<br>• Brushing distinguishes
-  distributions for filtered cells and categorizes them by expression
-  levels (e.g., high vs. low variability). | | <strong>Dropdown
-  Filters</strong><br>(Social Behaviors & Specific Genes) | • Filtering
-  <u>categorizes</u> cells by behaviors or genes, <u>distinguishing</u>
-  subsets (e.g., aggressive vs. nurturing behaviors). | | <strong>Cell
-  Opacity Slider</strong> | • <u>Distinguish</u> separates cells from the
-  background atlas via opacity adjustment. |</p>
+  <p><strong>Low-Level Tasks Supports</strong> 
+  <table>
+  <thead>
+    <tr>
+      <th style="width:28%; text-align:left;">Visualization / Interaction</th>
+      <th style="width:72%; text-align:left;">Achieved Low-Level Tasks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Overlaid Spatial Scatter Plot</strong><br>(Cells on Atlas at Bregma 0.14 mm)</td>
+      <td>
+        • Users can <u>identify</u> individual cells by their distinct positions and encodings (e.g., color for gene expression).<br>
+        • <u>Locate</u> enables pinpointing cells relative to atlas landmarks (e.g., sub-regions in the preoptic area).<br>
+        • <u>Cluster</u> reveals perceptual groupings of cells in anatomical regions, helping spot density patterns.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Bidirectional Brushing</strong><br>between Overlaid and Non-Overlaid Scatter Plots</td>
+      <td>
+        • Brushing allows <u>identifying</u> and <u>locating</u> selected cells at higher resolution in the zoomable plot (overcoming Altair’s overlay limitation).<br>
+        • Supports <u>comparing</u> cell positions/distributions between views and <u>associating</u> selections with linked plots (e.g., updating bar/boxplots), revealing correlations like gene expression variability in brushed regions.
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Bar Plot</strong><br>(Mean Gene Expression)</td>
+      <td>• Bars enable <u>comparing/ranking</u> mean expression levels across genes, with brushing dynamically updating values for selected cells.</td>
+    </tr>
+    <tr>
+      <td><strong>Boxplot</strong><br>(Gene Expression Distribution)</td>
+      <td>
+        • Users compare/rank medians, variability (IQR), and outliers across genes.<br>
+        • Brushing distinguishes distributions for filtered cells and categorizes them by expression levels (e.g., high vs. low variability).
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Dropdown Filters</strong><br>(Social Behaviors & Specific Genes)</td>
+      <td>• Filtering <u>categorizes</u> cells by behaviors or genes, <u>distinguishing</u> subsets (e.g., aggressive vs. nurturing behaviors).</td>
+    </tr>
+    <tr>
+      <td><strong>Cell Opacity Slider</strong></td>
+      <td>• <u>Distinguish</u> separates cells from the background atlas via opacity adjustment.</td>
+    </tr>
+  </tbody>
+</table>
+
   <p><strong>Encoding, Mark & Channel Description: View I</strong></p>
   <ul>
   <li><p><strong>Encoding</strong>:</p>
